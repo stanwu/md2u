@@ -27,31 +27,16 @@ permissions:
   contents: write
 
 jobs:
-  build:
-    strategy:
-      fail-fast: false
-      matrix:
-        include:
-          - platform: ubuntu-22.04
-            targets: deb,rpm
-            enabled_input: linux
-          - platform: windows-latest
-            targets: nsis,msi
-            enabled_input: windows
-
-    runs-on: ${{ matrix.platform }}
-    if: ${{ (matrix.enabled_input == 'linux' && inputs.linux) || (matrix.enabled_input == 'windows' && inputs.windows) }}
-
-    outputs:
-      artifacts: ${{ steps.tauri.outputs.artifactPaths }}
+  build-linux:
+    runs-on: ubuntu-22.04
+    if: ${{ inputs.linux }}
 
     steps:
       - uses: actions/checkout@v4
         with:
           ref: ${{ inputs.version }}
 
-      - name: Install system dependencies (Linux)
-        if: matrix.platform == 'ubuntu-22.04'
+      - name: Install system dependencies
         run: |
           sudo apt-get update
           sudo apt-get install -y \
@@ -123,32 +108,77 @@ jobs:
           releaseDraft: true
           prerelease: ${{ inputs.prerelease }}
           includeUpdaterJson: false
-          args: --bundles ${{ matrix.targets }}
+          args: --bundles deb,rpm
 
-      - name: Scan with ClamAV (Linux)
-        if: matrix.platform == 'ubuntu-22.04'
+      - name: Scan with ClamAV
         run: |
-          sudo apt-get install -y clamav clamav-daemon
+          sudo apt-get install -y clamav
           sudo systemctl stop clamav-freshclam || true
           sudo freshclam
-          ARTIFACTS="${{ steps.tauri.outputs.artifactPaths }}"
-          echo "Scanning: $ARTIFACTS"
-          echo "$ARTIFACTS" | tr ',' '\n' | while read f; do
+          echo "${{ steps.tauri.outputs.artifactPaths }}" | tr ',' '\n' | while read -r f; do
             [ -f "$f" ] || continue
-            echo "→ Scanning $f"
+            echo "Scanning $f"
             clamscan --no-summary "$f" || (echo "INFECTED: $f" && exit 1)
           done
           echo "ClamAV scan passed."
 
-      - name: Scan with Windows Defender (Windows)
-        if: matrix.platform == 'windows-latest'
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: artifacts-linux
+          path: ${{ steps.tauri.outputs.artifactPaths }}
+          retention-days: 1
+
+  build-windows:
+    runs-on: windows-latest
+    if: ${{ inputs.windows }}
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.version }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - name: Setup Rust
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Cache Rust dependencies
+        uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: './src-tauri -> target'
+
+      - name: Install frontend dependencies
+        run: npm ci
+
+      - name: Build frontend
+        run: npm run build
+
+      - name: Build Tauri app
+        id: tauri
+        uses: tauri-apps/tauri-action@v0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tagName: ${{ inputs.version }}
+          releaseName: 'marked2u ${{ inputs.version }}'
+          releaseDraft: true
+          prerelease: ${{ inputs.prerelease }}
+          includeUpdaterJson: false
+          args: --bundles nsis,msi
+
+      - name: Scan with Windows Defender
         shell: pwsh
         run: |
           $artifacts = "${{ steps.tauri.outputs.artifactPaths }}" -split ","
           foreach ($f in $artifacts) {
             $f = $f.Trim()
             if (-not (Test-Path $f)) { continue }
-            Write-Host "→ Scanning $f"
+            Write-Host "Scanning $f"
             $result = Start-Process -FilePath "C:\Program Files\Windows Defender\MpCmdRun.exe" `
               -ArgumentList "-Scan -ScanType 3 -File `"$f`"" `
               -Wait -PassThru -NoNewWindow
@@ -159,17 +189,17 @@ jobs:
           }
           Write-Host "Windows Defender scan passed."
 
-      - name: Upload artifacts for publish
+      - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: artifacts-${{ matrix.platform }}
+          name: artifacts-windows
           path: ${{ steps.tauri.outputs.artifactPaths }}
           retention-days: 1
 
   publish:
-    needs: [build]
+    needs: [build-linux, build-windows]
     runs-on: ubuntu-latest
-    if: ${{ success() }}
+    if: ${{ always() && !contains(needs.*.result, 'failure') && !contains(needs.*.result, 'cancelled') }}
 
     steps:
       - name: Publish Release
