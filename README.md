@@ -1,5 +1,7 @@
 # marked2u
 
+> 本專案 100% 由 [Claude Code](https://claude.ai/code) 開發。
+
 輕量級的桌面 Markdown 預覽器，基於 [Tauri](https://tauri.app/) 打造。支援即時檔案監聽、Mermaid 圖表、語法高亮與 Obsidian 風格 Callout。
 
 ## 功能特色
