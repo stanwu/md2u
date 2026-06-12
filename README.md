@@ -55,6 +55,15 @@ marked2u /path/to/yourfile.md
 
 檔案儲存後，預覽會自動更新，無需手動重新整理。
 
+## 安全性
+
+Release 頁面提供的所有安裝檔均由 GitHub Actions 從原始碼自動編譯，並在發布前完成掃毒驗證：
+
+- **Linux**（`.deb`、`.rpm`）— 由 GitHub Ubuntu runner 編譯，經 [ClamAV](https://www.clamav.net/) 掃描
+- **Windows**（`.exe`、`.msi`）— 由 GitHub Windows runner 編譯，經 Windows Defender 掃描
+
+掃毒任一不通過，Release 即不發布。你可以在 [Actions](../../actions) 頁面查看每次 Release 的完整 build log。
+
 ## 技術棧
 
 | 層級 | 技術 |
