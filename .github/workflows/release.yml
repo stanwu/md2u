@@ -125,44 +125,46 @@ jobs:
           includeUpdaterJson: false
           args: --bundles ${{ matrix.targets }}
 
-      - name: Upload artifacts for VirusTotal scan
+      - name: Scan with ClamAV (Linux)
+        if: matrix.platform == 'ubuntu-22.04'
+        run: |
+          sudo apt-get install -y clamav clamav-daemon
+          sudo systemctl stop clamav-freshclam || true
+          sudo freshclam
+          ARTIFACTS="${{ steps.tauri.outputs.artifactPaths }}"
+          echo "Scanning: $ARTIFACTS"
+          echo "$ARTIFACTS" | tr ',' '\n' | while read f; do
+            [ -f "$f" ] || continue
+            echo "→ Scanning $f"
+            clamscan --no-summary "$f" || (echo "INFECTED: $f" && exit 1)
+          done
+          echo "ClamAV scan passed."
+
+      - name: Scan with Windows Defender (Windows)
+        if: matrix.platform == 'windows-latest'
+        shell: pwsh
+        run: |
+          $artifacts = "${{ steps.tauri.outputs.artifactPaths }}" -split ","
+          foreach ($f in $artifacts) {
+            $f = $f.Trim()
+            if (-not (Test-Path $f)) { continue }
+            Write-Host "→ Scanning $f"
+            $result = Start-Process -FilePath "C:\Program Files\Windows Defender\MpCmdRun.exe" `
+              -ArgumentList "-Scan -ScanType 3 -File `"$f`"" `
+              -Wait -PassThru -NoNewWindow
+            if ($result.ExitCode -ne 0) {
+              Write-Error "INFECTED or scan error: $f (exit code $($result.ExitCode))"
+              exit 1
+            }
+          }
+          Write-Host "Windows Defender scan passed."
+
+      - name: Upload artifacts for publish
         uses: actions/upload-artifact@v4
         with:
           name: artifacts-${{ matrix.platform }}
           path: ${{ steps.tauri.outputs.artifactPaths }}
           retention-days: 1
-
-  virustotal:
-    needs: build
-    runs-on: ubuntu-latest
-    if: ${{ always() && !contains(needs.build.result, 'failure') }}
-
-    steps:
-      - name: Download all artifacts
-        uses: actions/download-artifact@v4
-        with:
-          path: artifacts
-          merge-multiple: true
-
-      - name: List artifacts to scan
-        id: list
-        run: |
-          FILES=$(find artifacts -type f \( -name "*.deb" -o -name "*.rpm" -o -name "*.exe" -o -name "*.msi" \) | tr '\n' ',')
-          echo "files=$FILES" >> $GITHUB_OUTPUT
-          echo "Found files: $FILES"
-
-      - name: Scan with VirusTotal
-        uses: crazy-max/ghaction-virustotal@v4
-        id: vt
-        with:
-          vt_api_key: ${{ secrets.VIRUSTOTAL_API_KEY }}
-          files: ${{ steps.list.outputs.files }}
-          update_release_body: false
-
-      - name: Check scan results
-        run: |
-          echo "VirusTotal scan complete."
-          echo "Results: ${{ steps.vt.outputs.analysis }}"
 
   publish:
     needs: [build, virustotal]
