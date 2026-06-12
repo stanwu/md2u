@@ -47,7 +47,7 @@ jobs:
             rpm
 
       - name: Setup Node.js
-        uses: actions/setup-node@42dc69e1aa15d09112580998cf2ef0119e2e91ae # v4
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
           node-version: '22'
           cache: 'npm'
@@ -58,7 +58,7 @@ jobs:
           toolchain: stable
 
       - name: Cache Rust dependencies
-        uses: Swatinem/rust-cache@ea165f8d65b6e75b540449e92b4886f43607fa02 # v2
+        uses: Swatinem/rust-cache@e18b497796c12c097a38f9edb9d0641fb99eee32 # v2
         with:
           workspaces: './src-tauri -> target'
 
@@ -70,7 +70,7 @@ jobs:
 
       - name: Build Tauri app
         id: tauri
-        uses: tauri-apps/tauri-action@49933ea5288caeca8642d1e84afbd3f7d6820020 # v0
+        uses: tauri-apps/tauri-action@84b9d35b5fc46c1e45415bdb6144030364f7ebc5 # v0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
@@ -127,7 +127,7 @@ jobs:
           echo "ClamAV scan passed."
 
       - name: Upload artifacts
-        uses: actions/upload-artifact@fce9c6108b31ea247710505d3aaaa893ee6768d4 # v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: artifacts-linux
           path: ${{ steps.tauri.outputs.artifactPaths }}
@@ -143,7 +143,7 @@ jobs:
           ref: ${{ inputs.version }}
 
       - name: Setup Node.js
-        uses: actions/setup-node@42dc69e1aa15d09112580998cf2ef0119e2e91ae # v4
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
           node-version: '22'
           cache: 'npm'
@@ -154,7 +154,7 @@ jobs:
           toolchain: stable
 
       - name: Cache Rust dependencies
-        uses: Swatinem/rust-cache@ea165f8d65b6e75b540449e92b4886f43607fa02 # v2
+        uses: Swatinem/rust-cache@e18b497796c12c097a38f9edb9d0641fb99eee32 # v2
         with:
           workspaces: './src-tauri -> target'
 
@@ -166,7 +166,7 @@ jobs:
 
       - name: Build Tauri app
         id: tauri
-        uses: tauri-apps/tauri-action@49933ea5288caeca8642d1e84afbd3f7d6820020 # v0
+        uses: tauri-apps/tauri-action@84b9d35b5fc46c1e45415bdb6144030364f7ebc5 # v0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
@@ -197,7 +197,7 @@ jobs:
           Write-Host "Windows Defender scan passed."
 
       - name: Upload artifacts
-        uses: actions/upload-artifact@fce9c6108b31ea247710505d3aaaa893ee6768d4 # v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: artifacts-windows
           path: ${{ steps.tauri.outputs.artifactPaths }}
