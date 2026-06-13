@@ -1,0 +1,18 @@
+/* Multi-Column — newspaper two-column layout */
+:root {
+  --bg: #fdfdf9; --bg-secondary: #f5f5f0; --text: #111; --text-muted: #777;
+  --border: #ddd; --link: #1a5276; --code-bg: #efefea; --blockquote-border: #aaa;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --bg: #1a1a1a; --bg-secondary: #222; --text: #e8e8e0; --text-muted: #888;
+    --border: #333; --link: #7fb3d3; --code-bg: #2a2a2a; --blockquote-border: #555; }
+}
+.markdown-body {
+  font-family: "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+  font-size: 14px; line-height: 1.7;
+  column-count: 2; column-gap: 2.5em; column-rule: 1px solid var(--border);
+}
+.markdown-body h1 { column-span: all; font-size: 2em; text-align: center;
+  border-bottom: 2px solid var(--text); padding-bottom: 0.3em; margin-bottom: 0.5em; }
+.markdown-body h2 { font-size: 1.2em; text-transform: uppercase; letter-spacing: 0.05em; }
+.markdown-body pre, .markdown-body table, .markdown-body .mermaid { column-span: all; }

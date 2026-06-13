@@ -1,0 +1,15 @@
+/* Manuscript — typewriter monospace, drafting feel */
+:root {
+  --bg: #fefefe; --bg-secondary: #f5f5f0; --text: #1a1a1a; --text-muted: #777;
+  --border: #d0d0c8; --link: #1a1a1a; --code-bg: #eeeeea; --blockquote-border: #aaa;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --bg: #141410; --bg-secondary: #1c1c18; --text: #ddddc8; --text-muted: #888;
+    --border: #333328; --link: #ddddc8; --code-bg: #222218; --blockquote-border: #666; }
+}
+.markdown-body { font-family: "Courier New", Courier, "Lucida Console", monospace; font-size: 14px; line-height: 2; max-width: 640px; }
+.markdown-body h1 { font-size: 1.6em; text-align: center; text-transform: uppercase; letter-spacing: 0.15em; border-top: 1px solid var(--text); border-bottom: 1px solid var(--text); padding: 0.3em 0; }
+.markdown-body h2 { font-size: 1.2em; text-decoration: underline; font-weight: normal; }
+.markdown-body h3 { font-size: 1em; font-weight: bold; }
+.markdown-body strong { text-decoration: underline; font-weight: normal; }
+.markdown-body a { color: var(--link); text-decoration: underline; }

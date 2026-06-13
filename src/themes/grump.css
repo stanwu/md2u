@@ -1,0 +1,14 @@
+/* Grump — dark moody, low contrast intentional */
+:root {
+  --bg: #1e1e1e; --bg-secondary: #252525; --text: #b0b0a8; --text-muted: #666;
+  --border: #333; --link: #7daea3; --code-bg: #282828; --blockquote-border: #555;
+}
+.markdown-body { font-family: "Menlo", "Monaco", "Consolas", monospace; font-size: 14px; line-height: 1.8; color: #b0b0a8; }
+.markdown-body h1 { font-size: 1.6em; color: #d8c8a0; border-bottom: 1px solid #444; }
+.markdown-body h2 { font-size: 1.3em; color: #c8b890; }
+.markdown-body h3 { font-size: 1.1em; color: #b8a880; }
+.markdown-body a { color: #7daea3; }
+.markdown-body code { background: #282828; color: #a9b665; border-radius: 3px; }
+.markdown-body pre { background: #1a1a1a; border: 1px solid #333; }
+.markdown-body blockquote { border-left: 3px solid #555; color: #888; font-style: italic; }
+.markdown-body strong { color: #d8c8a0; }

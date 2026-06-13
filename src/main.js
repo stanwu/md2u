@@ -242,6 +242,82 @@ document.addEventListener('keydown', (e) => {
   }
 })
 
+// ── Theme ──
+const THEMES = [
+  { id: 'obsidian', name: 'Obsidian', key: '1' },
+  { id: 'swiss', name: 'Swiss', key: '2' },
+  { id: 'ink', name: 'Ink', key: '3' },
+  { id: 'multi-column', name: 'Multi-Column', key: '4' },
+  { id: 'github', name: 'GitHub', key: '5' },
+  { id: 'amblin', name: 'Amblin', key: '6' },
+  { id: 'upstanding-citizen', name: 'Upstanding Citizen', key: '7' },
+  { id: 'lopash', name: 'Lopash', key: '8' },
+  { id: 'manuscript', name: 'Manuscript', key: '9' },
+  { id: 'grump', name: 'Grump', key: '1', alt: true },
+]
+
+const themeLink = document.getElementById('theme-link')
+const themeMenu = document.getElementById('theme-menu')
+const themeBackdrop = document.getElementById('theme-backdrop')
+const toolbarThemeBtn = document.getElementById('toolbar-theme')
+const toolbarThemeName = document.getElementById('toolbar-theme-name')
+const customCssInput = document.getElementById('custom-css-input')
+
+let activeTheme = localStorage.getItem('theme') || 'obsidian'
+
+function applyTheme(id, customUrl) {
+  activeTheme = id
+  localStorage.setItem('theme', id)
+  themeLink.href = customUrl ?? `/themes/${id}.css`
+  toolbarThemeName.textContent = THEMES.find(t => t.id === id)?.name ?? 'Custom'
+  document.querySelectorAll('#theme-list li').forEach(li => {
+    li.classList.toggle('active', li.dataset.theme === id)
+  })
+}
+
+function openThemeMenu() {
+  themeMenu.hidden = false
+  toolbarThemeBtn.classList.add('active')
+}
+
+function closeThemeMenu() {
+  themeMenu.hidden = true
+  toolbarThemeBtn.classList.remove('active')
+}
+
+toolbarThemeBtn.addEventListener('click', () => {
+  themeMenu.hidden ? openThemeMenu() : closeThemeMenu()
+})
+
+themeBackdrop.addEventListener('click', closeThemeMenu)
+
+document.querySelectorAll('#theme-list li').forEach(li => {
+  li.addEventListener('click', () => {
+    if (li.dataset.theme === 'custom') {
+      customCssInput.click()
+    } else {
+      applyTheme(li.dataset.theme)
+      closeThemeMenu()
+    }
+  })
+})
+
+customCssInput.addEventListener('change', () => {
+  const file = customCssInput.files?.[0]
+  if (!file) return
+  const url = URL.createObjectURL(file)
+  applyTheme('custom', url)
+  closeThemeMenu()
+})
+
+document.addEventListener('keydown', (e) => {
+  if (!e.metaKey && !e.ctrlKey) return
+  const t = THEMES.find(th => th.key === e.key && !!th.alt === e.altKey)
+  if (t) { e.preventDefault(); applyTheme(t.id); closeThemeMenu() }
+})
+
+applyTheme(activeTheme)
+
 // ── Export ──
 let currentFilePath = null
 let currentMarkdown = null

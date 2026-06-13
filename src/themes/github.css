@@ -1,0 +1,17 @@
+/* GitHub — faithful GitHub markdown rendering */
+:root {
+  --bg: #ffffff; --bg-secondary: #f6f8fa; --text: #1f2328; --text-muted: #656d76;
+  --border: #d1d9e0; --link: #0969da; --code-bg: #f6f8fa; --blockquote-border: #d1d9e0;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --bg: #0d1117; --bg-secondary: #161b22; --text: #e6edf3; --text-muted: #8b949e;
+    --border: #30363d; --link: #58a6ff; --code-bg: #161b22; --blockquote-border: #3d444d; }
+}
+.markdown-body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 1.6; }
+.markdown-body h1,.markdown-body h2 { border-bottom: 1px solid var(--border); padding-bottom: 0.3em; }
+.markdown-body h1 { font-size: 2em; } .markdown-body h2 { font-size: 1.5em; }
+.markdown-body code { background: var(--code-bg); border: 1px solid var(--border); border-radius: 6px; padding: 0.2em 0.4em; font-size: 85%; }
+.markdown-body pre { background: var(--code-bg); border: 1px solid var(--border); border-radius: 6px; }
+.markdown-body pre code { border: none; background: none; }
+.markdown-body blockquote { color: var(--text-muted); border-left: 4px solid var(--blockquote-border); }
+.markdown-body table th { background: var(--bg-secondary); }

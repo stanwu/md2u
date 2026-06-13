@@ -1,0 +1,16 @@
+/* Upstanding Citizen — formal, structured, corporate serif */
+:root {
+  --bg: #ffffff; --bg-secondary: #f2f2f0; --text: #1a1a1a; --text-muted: #777;
+  --border: #cccccc; --link: #1a3a6b; --code-bg: #f0f0ee; --blockquote-border: #1a3a6b;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --bg: #18181c; --bg-secondary: #222228; --text: #dddde4; --text-muted: #888;
+    --border: #38383f; --link: #7ba7d8; --code-bg: #28282f; --blockquote-border: #7ba7d8; }
+}
+.markdown-body { font-family: "Times New Roman", Times, serif; font-size: 16px; line-height: 1.8; }
+.markdown-body h1 { font-size: 1.9em; text-transform: uppercase; letter-spacing: 0.12em; text-align: center; border-bottom: 3px double var(--text); padding-bottom: 0.4em; }
+.markdown-body h2 { font-size: 1.4em; text-transform: uppercase; letter-spacing: 0.08em; border-bottom: 1px solid var(--border); }
+.markdown-body h3 { font-size: 1.1em; font-style: italic; }
+.markdown-body a { color: var(--link); text-decoration: underline; }
+.markdown-body blockquote { border-left: 4px double var(--blockquote-border); font-style: italic; padding: 4px 20px; }
+.markdown-body table th { text-transform: uppercase; letter-spacing: 0.06em; font-size: 0.85em; }

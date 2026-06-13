@@ -1,0 +1,13 @@
+/* Swiss — clean, minimal, Helvetica-driven */
+:root {
+  --bg: #ffffff; --bg-secondary: #f8f8f7; --text: #1a1a1a; --text-muted: #888;
+  --border: #e0e0e0; --link: #4a6cf7; --code-bg: #f3f3f0; --blockquote-border: #ddd;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --bg: #1e1e2e; --bg-secondary: #27273a; --text: #cdd6f4; --text-muted: #6c7086;
+    --border: #313244; --link: #89b4fa; --code-bg: #313244; --blockquote-border: #45475a; }
+}
+.markdown-body { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 15px; }
+.markdown-body h1,.markdown-body h2,.markdown-body h3 { font-weight: 700; letter-spacing: -0.02em; }
+.markdown-body h1 { font-size: 2.2em; border-bottom: 3px solid var(--text); padding-bottom: 0.2em; }
+.markdown-body h2 { font-size: 1.5em; border-bottom: 1px solid var(--border); }

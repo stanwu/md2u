@@ -1,0 +1,14 @@
+/* Ink — high contrast, editorial black & white */
+:root {
+  --bg: #fafaf8; --bg-secondary: #f0f0ed; --text: #0a0a0a; --text-muted: #666;
+  --border: #ccc; --link: #000; --code-bg: #eeeee9; --blockquote-border: #000;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --bg: #0a0a0a; --bg-secondary: #141414; --text: #f0f0f0; --text-muted: #888;
+    --border: #333; --link: #fff; --code-bg: #1a1a1a; --blockquote-border: #fff; }
+}
+.markdown-body { font-family: "Georgia", "Times New Roman", serif; font-size: 17px; line-height: 1.85; }
+.markdown-body h1 { font-size: 2.4em; font-weight: 900; text-transform: uppercase; letter-spacing: 0.04em; }
+.markdown-body h2 { font-size: 1.5em; font-weight: 700; border-bottom: 2px solid var(--text); }
+.markdown-body a { color: var(--link); text-decoration: underline; text-underline-offset: 3px; }
+.markdown-body blockquote { border-left: 4px solid var(--text); font-style: italic; color: var(--text); }
