@@ -4,6 +4,24 @@
 
 輕量級的桌面 Markdown 預覽器，基於 [Tauri](https://tauri.app/) 打造。支援即時檔案監聽、Mermaid 圖表、語法高亮與 Obsidian 風格 Callout。
 
+## 截圖
+
+### 預覽模式（Obsidian theme）
+![預覽模式](docs/screenshots/preview.png)
+> 渲染 Markdown 文件，底部工具列顯示目前主題與匯出按鈕。
+
+### Find Bar（Ctrl+F / Cmd+F）
+![Find Bar](docs/screenshots/find.png)
+> 即時搜尋關鍵字，螢光筆標示所有符合項目（橘色為目前焦點），支援 Whole words、Case sensitive、Regex。
+
+### CSS Theme 切換
+![CSS Theme 切換](docs/screenshots/themes.png)
+> 10 種內建主題：Obsidian、Swiss、Ink、Multi-Column、GitHub、Amblin、Upstanding Citizen、Lopash、Manuscript、Grump，以及 Custom CSS 自訂選項。快捷鍵 ⌘1–⌘9。
+
+### Export 匯出
+![Export 匯出](docs/screenshots/export.png)
+> 點選右下角分享圖示（↑）開啟匯出面板，支援 HTML（含 CDN）、PDF（A4 分頁）、DOCX、MD、OPML 五種格式。
+
 ## 功能特色
 
 - **拖曳開啟** — 直接將 `.md` 檔案拖曳到視窗即可預覽
@@ -12,6 +30,9 @@
 - **語法高亮** — 透過 [highlight.js](https://highlightjs.org/) 支援數十種程式語言
 - **Mermaid 圖表** — 直接在 Markdown 中渲染流程圖、時序圖等
 - **Obsidian Callout** — 支援 `[!NOTE]`、`[!WARNING]` 等提示區塊
+- **Find Bar** — Ctrl+F / Cmd+F 全文搜尋，支援 Whole words、Case sensitive、Regex
+- **10 種 CSS Theme** — 內建 Obsidian、GitHub、Grump 等主題，支援 Custom CSS
+- **匯出** — 一鍵匯出 HTML（含 CDN）、PDF、DOCX、MD、OPML
 - **檔案關聯** — 安裝後可直接雙擊 `.md` / `.markdown` 檔案開啟
 - **視窗狀態記憶** — 記住上次視窗大小與位置
 
