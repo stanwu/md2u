@@ -1,0 +1,592 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>marked2u — 跨平台 Markdown 預覽器</title>
+  <meta name="description" content="輕量、開源、跨平台的 Markdown 預覽器。Obsidian 風格渲染，支援 Mermaid、語法高亮、10 種主題與一鍵匯出。" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0d0d14;
+      --bg2: #13131e;
+      --bg3: #1a1a2e;
+      --border: #2a2a45;
+      --text: #e8e8f0;
+      --muted: #8888aa;
+      --accent: #7c6cf7;
+      --accent2: #a78bfa;
+      --green: #34d399;
+      --red: #f87171;
+      --yellow: #fbbf24;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Inter", sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ── Nav ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 48px;
+      background: rgba(13,13,20,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo { font-size: 1.2rem; font-weight: 700; color: var(--accent2); letter-spacing: -0.02em; }
+    .nav-links { display: flex; gap: 32px; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta {
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      padding: 8px 20px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.1s;
+    }
+    .nav-cta:hover { background: var(--accent2); transform: translateY(-1px); }
+
+    /* ── Hero ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 120px 24px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      width: 800px; height: 800px;
+      background: radial-gradient(circle, rgba(124,108,247,0.15) 0%, transparent 70%);
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(124,108,247,0.15);
+      border: 1px solid rgba(124,108,247,0.4);
+      color: var(--accent2);
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 5px 14px;
+      border-radius: 999px;
+      margin-bottom: 28px;
+      letter-spacing: 0.05em;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1.1;
+      margin-bottom: 12px;
+      background: linear-gradient(135deg, #fff 30%, var(--accent2) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-tagline {
+      font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+      color: var(--muted);
+      max-width: 560px;
+      margin: 0 auto 16px;
+    }
+
+    .hero-sub {
+      font-size: 0.95rem;
+      color: var(--accent2);
+      opacity: 0.8;
+      margin-bottom: 48px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 72px;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent);
+      color: #fff;
+      text-decoration: none;
+      padding: 14px 32px;
+      border-radius: 10px;
+      font-size: 1rem;
+      font-weight: 700;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 4px 24px rgba(124,108,247,0.35);
+    }
+    .btn-primary:hover { background: var(--accent2); transform: translateY(-2px); box-shadow: 0 8px 32px rgba(124,108,247,0.5); }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid var(--border);
+      color: var(--text);
+      text-decoration: none;
+      padding: 14px 28px;
+      border-radius: 10px;
+      font-size: 1rem;
+      font-weight: 600;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-secondary:hover { background: rgba(255,255,255,0.1); transform: translateY(-2px); }
+
+    .hero-screenshot {
+      width: 100%;
+      max-width: 900px;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      box-shadow: 0 32px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(124,108,247,0.2);
+      overflow: hidden;
+    }
+
+    .screenshot-bar {
+      background: #1e1e2e;
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-bottom: 1px solid var(--border);
+    }
+    .dot { width: 12px; height: 12px; border-radius: 50%; }
+    .dot-r { background: #ff5f57; }
+    .dot-y { background: #febc2e; }
+    .dot-g { background: #28c840; }
+    .screenshot-bar span { color: var(--muted); font-size: 12px; margin-left: 12px; }
+
+    .hero-screenshot img { width: 100%; display: block; }
+
+    /* ── Pain ── */
+    .pain {
+      padding: 100px 24px;
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-label {
+      text-align: center;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent2);
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+
+    .section-sub {
+      text-align: center;
+      color: var(--muted);
+      max-width: 560px;
+      margin: 0 auto 64px;
+      font-size: 1.05rem;
+    }
+
+    .pain-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .pain-card {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 28px;
+      position: relative;
+    }
+
+    .pain-icon { font-size: 2rem; margin-bottom: 16px; }
+    .pain-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 10px; color: var(--text); }
+    .pain-card p { color: var(--muted); font-size: 0.92rem; line-height: 1.65; }
+    .pain-card .tag-bad {
+      display: inline-block;
+      background: rgba(248,113,113,0.12);
+      color: var(--red);
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 2px 10px;
+      border-radius: 999px;
+      margin-bottom: 12px;
+    }
+
+    .pain-solution {
+      max-width: 760px;
+      margin: 48px auto 0;
+      background: linear-gradient(135deg, rgba(124,108,247,0.12), rgba(52,211,153,0.08));
+      border: 1px solid rgba(124,108,247,0.3);
+      border-radius: 16px;
+      padding: 32px 36px;
+      text-align: center;
+    }
+    .pain-solution h3 { font-size: 1.3rem; font-weight: 800; margin-bottom: 12px; }
+    .pain-solution p { color: var(--muted); font-size: 0.98rem; }
+    .pain-solution strong { color: var(--accent2); }
+
+    /* ── Features ── */
+    .features { padding: 100px 24px; max-width: 1100px; margin: 0 auto; }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+      margin-bottom: 72px;
+    }
+
+    .feat-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 28px;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .feat-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+    .feat-icon { font-size: 1.8rem; margin-bottom: 14px; }
+    .feat-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
+    .feat-card p { color: var(--muted); font-size: 0.88rem; line-height: 1.6; }
+
+    /* ── Screenshots gallery ── */
+    .gallery { padding: 0 24px 100px; max-width: 1100px; margin: 0 auto; }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(460px, 1fr));
+      gap: 24px;
+    }
+
+    .gallery-item {
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: var(--bg2);
+    }
+
+    .gallery-item img { width: 100%; display: block; }
+    .gallery-caption {
+      padding: 14px 18px;
+      font-size: 0.85rem;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+    }
+    .gallery-caption strong { color: var(--text); }
+
+    /* ── Download ── */
+    .download {
+      padding: 100px 24px;
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      text-align: center;
+    }
+
+    .download-platforms {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin: 48px auto 0;
+      max-width: 720px;
+    }
+
+    .platform-card {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 28px 32px;
+      text-align: left;
+      min-width: 200px;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .platform-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+    .platform-icon { font-size: 2.2rem; margin-bottom: 12px; }
+    .platform-name { font-size: 1rem; font-weight: 700; margin-bottom: 6px; }
+    .platform-exts { font-size: 0.82rem; color: var(--muted); margin-bottom: 18px; }
+    .platform-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--accent);
+      color: #fff;
+      text-decoration: none;
+      padding: 9px 18px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      transition: background 0.2s;
+    }
+    .platform-btn:hover { background: var(--accent2); }
+
+    .download-note {
+      margin-top: 36px;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+    .download-note a { color: var(--accent2); text-decoration: none; }
+    .download-note a:hover { text-decoration: underline; }
+
+    /* ── Footer ── */
+    footer {
+      padding: 40px 48px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    footer .logo { font-weight: 700; color: var(--accent2); }
+    footer p { font-size: 0.82rem; color: var(--muted); }
+    footer a { color: var(--accent2); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    @media (max-width: 768px) {
+      nav { padding: 14px 20px; }
+      .nav-links { display: none; }
+      .gallery-grid { grid-template-columns: 1fr; }
+      footer { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav>
+  <span class="nav-logo">marked2u</span>
+  <div class="nav-links">
+    <a href="#pain">為什麼選擇</a>
+    <a href="#features">功能</a>
+    <a href="#screenshots">截圖</a>
+    <a href="#download">下載</a>
+  </div>
+  <a class="nav-cta" href="#download">免費下載</a>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-badge">✦ 開源 · 免費 · 跨平台</div>
+  <h1>Markdown 預覽<br/>終於有好選擇</h1>
+  <p class="hero-tagline">輕量、快速、開源的桌面 Markdown 預覽器，預設採用 Obsidian 渲染引擎</p>
+  <p class="hero-sub">支援 Windows · Linux · 即將推出 macOS</p>
+  <div class="hero-actions">
+    <a class="btn-primary" href="#download">
+      ⬇ 立即下載
+    </a>
+    <a class="btn-secondary" href="https://github.com/stanwu/marked2u" target="_blank">
+      ★ GitHub
+    </a>
+  </div>
+  <div class="hero-screenshot">
+    <div class="screenshot-bar">
+      <span class="dot dot-r"></span>
+      <span class="dot dot-y"></span>
+      <span class="dot dot-g"></span>
+      <span>README.md — marked2u</span>
+    </div>
+    <img src="screenshots/preview.png" alt="marked2u 預覽畫面" />
+  </div>
+</section>
+
+<!-- Pain -->
+<section class="pain" id="pain">
+  <div class="section-label">痛點</div>
+  <h2 class="section-title">你一定有過這些困擾</h2>
+  <p class="section-sub">市面上的 Markdown 工具，不是只有 macOS 能用，就是太重、太醜、閉源</p>
+
+  <div class="pain-grid">
+    <div class="pain-card">
+      <div class="pain-icon">🪟</div>
+      <span class="tag-bad">Windows 痛點</span>
+      <h3>記事本 render 結果難以入目</h3>
+      <p>Windows 11 內建記事本雖然支援 Markdown，但渲染品質粗糙，字型、間距、程式碼區塊全都差強人意，用來 review 文件根本是折磨。</p>
+    </div>
+    <div class="pain-card">
+      <div class="pain-icon">🍎</div>
+      <span class="tag-bad">macOS 獨占</span>
+      <h3>Marked2 太好用，卻只有 macOS</h3>
+      <p>Marked2 是 macOS 上公認最優秀的 Markdown 預覽器，主題豐富、匯出強大。但換到 Windows 或 Linux 就完全失去這個體驗。</p>
+    </div>
+    <div class="pain-card">
+      <div class="pain-icon">🐘</div>
+      <span class="tag-bad">太重</span>
+      <h3>其他方案太厚重</h3>
+      <p>VS Code、Typora、Obsidian 功能強大但啟動慢、記憶體占用高。你只是想快速預覽一個 .md 檔，不需要一個完整的編輯器生態系。</p>
+    </div>
+    <div class="pain-card">
+      <div class="pain-icon">🔒</div>
+      <span class="tag-bad">閉源</span>
+      <h3>閉源軟體，功能有限又要錢</h3>
+      <p>許多跨平台 Markdown 工具是閉源的，功能受限、更新慢，甚至要訂閱付費。出了問題無法自己修，只能等官方回應。</p>
+    </div>
+  </div>
+
+  <div class="pain-solution">
+    <h3>所以我們直接做了一個 ✦</h3>
+    <p>
+      <strong>marked2u</strong> — 基於 Tauri 打造的跨平台 Markdown 預覽器，<br />
+      預設採用與 <strong>Obsidian 相同的渲染引擎</strong>，輕量開源，Windows / Linux 都能用，<br />
+      終於不用在 macOS 和其他平台之間做出妥協。
+    </p>
+  </div>
+</section>
+
+<!-- Features -->
+<section id="features">
+  <div class="features" style="padding-bottom: 0">
+    <div class="section-label">功能</div>
+    <h2 class="section-title">你需要的，全都有</h2>
+    <p class="section-sub">不多餘、不臃腫，專注在 Markdown 預覽這件事上做到最好</p>
+
+    <div class="features-grid">
+      <div class="feat-card">
+        <div class="feat-icon">⚡</div>
+        <h3>即開即用，秒速預覽</h3>
+        <p>拖曳 .md 檔案到視窗，或命令列 <code>marked2u file.md</code>，立即渲染，儲存後自動更新。</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">🎨</div>
+        <h3>10 種 CSS 主題</h3>
+        <p>內建 Obsidian、GitHub、Swiss、Ink、Multi-Column、Grump 等主題，支援 Custom CSS 自訂，⌘1–⌘9 快速切換。</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">🔍</div>
+        <h3>全文搜尋</h3>
+        <p>Ctrl+F / Cmd+F 開啟 Find Bar，螢光筆即時標示，支援 Whole words、Case sensitive、Regex。</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">📊</div>
+        <h3>Mermaid 圖表</h3>
+        <p>直接在 Markdown 中渲染流程圖、時序圖、甘特圖等，export 時 SVG 完整保留。</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">📤</div>
+        <h3>一鍵匯出</h3>
+        <p>支援 HTML（含 CDN）、PDF（A4 分頁）、DOCX、MD、OPML，點圖示即可匯出。</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">🔓</div>
+        <h3>完全開源，永久免費</h3>
+        <p>MIT License，原始碼在 GitHub 公開，歡迎 PR。Release 由 CI 自動 build 並掃毒驗證後發布。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Screenshots -->
+<section id="screenshots">
+  <div class="gallery">
+    <div class="section-label" style="text-align:center">截圖</div>
+    <h2 class="section-title">看起來就是這樣</h2>
+    <p class="section-sub" style="margin-bottom:48px">乾淨、清晰，跟你在 Obsidian 看到的一模一樣</p>
+
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <img src="screenshots/find.png" alt="Find Bar" />
+        <div class="gallery-caption"><strong>Find Bar</strong> — Ctrl+F 全文搜尋，螢光筆即時標示，支援 Regex</div>
+      </div>
+      <div class="gallery-item">
+        <img src="screenshots/themes.png" alt="CSS Theme 切換" />
+        <div class="gallery-caption"><strong>10 種主題</strong> — 從 Obsidian 到 Grump，快捷鍵一鍵切換</div>
+      </div>
+      <div class="gallery-item" style="grid-column: 1 / -1">
+        <img src="screenshots/export.png" alt="Export 匯出" />
+        <div class="gallery-caption"><strong>匯出面板</strong> — HTML、PDF、DOCX、MD、OPML，右下角分享鍵觸發</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Download -->
+<section class="download" id="download">
+  <div class="section-label">下載</div>
+  <h2 class="section-title">選擇你的平台</h2>
+  <p class="section-sub">免費下載，開源，無需帳號</p>
+
+  <div class="download-platforms">
+    <div class="platform-card">
+      <div class="platform-icon">🐧</div>
+      <div class="platform-name">Linux</div>
+      <div class="platform-exts">.deb（Debian / Ubuntu）<br>.rpm（Fedora / RHEL）</div>
+      <a class="platform-btn" href="https://github.com/stanwu/marked2u/releases/latest" target="_blank">
+        ⬇ 下載
+      </a>
+    </div>
+    <div class="platform-card">
+      <div class="platform-icon">🪟</div>
+      <div class="platform-name">Windows</div>
+      <div class="platform-exts">.exe（NSIS 安裝程式）<br>.msi（MSI 安裝程式）</div>
+      <a class="platform-btn" href="https://github.com/stanwu/marked2u/releases/latest" target="_blank">
+        ⬇ 下載
+      </a>
+    </div>
+    <div class="platform-card" style="opacity:0.55">
+      <div class="platform-icon">🍎</div>
+      <div class="platform-name">macOS</div>
+      <div class="platform-exts">即將推出<br>（需 Apple 簽章）</div>
+      <span class="platform-btn" style="background:#444;cursor:not-allowed">即將推出</span>
+    </div>
+  </div>
+
+  <p class="download-note">
+    所有 Release 由 GitHub Actions 自動編譯並完成 ClamAV / Windows Defender 掃毒驗證。<br />
+    查看 <a href="https://github.com/stanwu/marked2u/actions" target="_blank">Build Log</a> ·
+    <a href="https://github.com/stanwu/marked2u" target="_blank">原始碼</a> ·
+    <a href="https://github.com/stanwu/marked2u/blob/master/LICENSE" target="_blank">MIT License</a>
+  </p>
+</section>
+
+<!-- Footer -->
+<footer>
+  <span class="logo">marked2u</span>
+  <p>本專案 100% 由 <a href="https://claude.ai/code" target="_blank">Claude Code</a> 開發 · MIT License</p>
+  <a href="https://github.com/stanwu/marked2u" target="_blank">GitHub →</a>
+</footer>
+
+</body>
+</html>
