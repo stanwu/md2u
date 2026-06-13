@@ -119,8 +119,9 @@
     .tier-name { font-size: 0.78rem; font-weight: 700; color: var(--accent2); margin-bottom: 2px; }
     .tier-price { font-size: 1.1rem; font-weight: 800; color: var(--text); }
     .tier-desc { font-size: 0.75rem; color: var(--muted); margin-top: 2px; }
-    .license-btn { flex-shrink: 0; display: inline-flex; align-items: center; gap: 8px; background: var(--accent); color: #fff; text-decoration: none; padding: 12px 24px; border-radius: 10px; font-size: 0.95rem; font-weight: 700; transition: background 0.2s, transform 0.15s; white-space: nowrap; }
-    .license-btn:hover { background: var(--accent2); transform: translateY(-1px); }
+    .license-email { flex-shrink: 0; font-size: 0.9rem; color: var(--muted); }
+    .license-email a { color: var(--accent2); text-decoration: none; font-weight: 600; }
+    .license-email a:hover { text-decoration: underline; }
     .download-note { margin-top: 36px; font-size: 0.85rem; color: var(--muted); }
     .download-note a { color: var(--accent2); text-decoration: none; }
     .download-note a:hover { text-decoration: underline; }
@@ -295,7 +296,7 @@
           <div class="license-tier"><span class="tier-name" data-i18n="lic.t3.name"></span><span class="tier-price" data-i18n="lic.t3.price"></span><span class="tier-desc" data-i18n="lic.t3.desc"></span></div>
         </div>
       </div>
-      <a class="license-btn" href="mailto:purchase-marked2u@stanwu.org?subject=Purchase%20Marked2u" data-i18n="lic.btn"></a>
+      <div class="license-email" data-i18n="lic.contact"></div>
     </div>
   </div>
   <p class="download-note" data-i18n="dl.note"></p>
@@ -347,7 +348,7 @@ const I18N = {
     'lic.t1.name': '個人商業', 'lic.t1.price': 'USD $19', 'lic.t1.desc': '單人・買斷',
     'lic.t2.name': '團隊（≤10人）', 'lic.t2.price': 'USD $59', 'lic.t2.desc': '中小企業・買斷',
     'lic.t3.name': '企業', 'lic.t3.price': '詢價', 'lic.t3.desc': '大量授權・客製',
-    'lic.btn': '✉ 購買商業授權',
+    'lic.contact': '聯繫購買：<a href="mailto:purchase-marked2u@stanwu.org">purchase-marked2u@stanwu.org</a>',
     'dl.note': '所有 Release 由 GitHub Actions 自動編譯並完成 ClamAV / Windows Defender 掃毒驗證。<br/>查看 <a href="https://github.com/stanwu/marked2u/actions" target="_blank">Build Log</a> · <a href="https://github.com/stanwu/marked2u" target="_blank">原始碼</a> · <a href="https://github.com/stanwu/marked2u/blob/master/LICENSE" target="_blank">PolyForm Noncommercial License</a>',
     'footer.credit': '本專案由 <a href="https://claude.ai/code" target="_blank">Claude Code</a> AI 輔助開發 · <a href="https://github.com/stanwu/marked2u/blob/master/LICENSE" target="_blank">PolyForm Noncommercial License 1.0.0</a>',
   },
@@ -389,7 +390,7 @@ const I18N = {
     'lic.t1.name': '个人商业', 'lic.t1.price': 'USD $19', 'lic.t1.desc': '单人・买断',
     'lic.t2.name': '团队（≤10人）', 'lic.t2.price': 'USD $59', 'lic.t2.desc': '中小企业・买断',
     'lic.t3.name': '企业', 'lic.t3.price': '询价', 'lic.t3.desc': '大量授权・定制',
-    'lic.btn': '✉ 购买商业授权',
+    'lic.contact': '联系购买：<a href="mailto:purchase-marked2u@stanwu.org">purchase-marked2u@stanwu.org</a>',
     'dl.note': '所有 Release 由 GitHub Actions 自动编译并完成 ClamAV / Windows Defender 杀毒验证。<br/>查看 <a href="https://github.com/stanwu/marked2u/actions" target="_blank">Build Log</a> · <a href="https://github.com/stanwu/marked2u" target="_blank">源码</a> · <a href="https://github.com/stanwu/marked2u/blob/master/LICENSE" target="_blank">PolyForm Noncommercial License</a>',
     'footer.credit': '本项目由 <a href="https://claude.ai/code" target="_blank">Claude Code</a> AI 辅助开发 · <a href="https://github.com/stanwu/marked2u/blob/master/LICENSE" target="_blank">PolyForm Noncommercial License 1.0.0</a>',
   },
@@ -431,7 +432,7 @@ const I18N = {
     'lic.t1.name': 'Individual', 'lic.t1.price': 'USD $19', 'lic.t1.desc': '1 user · perpetual',
     'lic.t2.name': 'Team (≤10)', 'lic.t2.price': 'USD $59', 'lic.t2.desc': 'SMB · perpetual',
     'lic.t3.name': 'Enterprise', 'lic.t3.price': 'Contact', 'lic.t3.desc': 'Volume · custom',
-    'lic.btn': '✉ Purchase License',
+    'lic.contact': 'Contact: <a href="mailto:purchase-marked2u@stanwu.org">purchase-marked2u@stanwu.org</a>',
     'dl.note': 'All releases are built by GitHub Actions and scanned by ClamAV / Windows Defender before publishing.<br/><a href="https://github.com/stanwu/marked2u/actions" target="_blank">Build Log</a> · <a href="https://github.com/stanwu/marked2u" target="_blank">Source</a> · <a href="https://github.com/stanwu/marked2u/blob/master/LICENSE" target="_blank">PolyForm Noncommercial License</a>',
     'footer.credit': 'Built with <a href="https://claude.ai/code" target="_blank">Claude Code</a> AI assistance · <a href="https://github.com/stanwu/marked2u/blob/master/LICENSE" target="_blank">PolyForm Noncommercial License 1.0.0</a>',
   },
@@ -473,7 +474,7 @@ const I18N = {
     'lic.t1.name': '個人商用', 'lic.t1.price': 'USD $19', 'lic.t1.desc': '1ユーザー・買切',
     'lic.t2.name': 'チーム（≤10人）', 'lic.t2.price': 'USD $59', 'lic.t2.desc': '中小企業・買切',
     'lic.t3.name': 'エンタープライズ', 'lic.t3.price': '要相談', 'lic.t3.desc': '大量・カスタム',
-    'lic.btn': '✉ 商用ライセンスを購入',
+    'lic.contact': '購入連絡先：<a href="mailto:purchase-marked2u@stanwu.org">purchase-marked2u@stanwu.org</a>',
     'dl.note': '全リリースは GitHub Actions で自動ビルドし、ClamAV / Windows Defender でウイルススキャン済み。<br/><a href="https://github.com/stanwu/marked2u/actions" target="_blank">Build Log</a> · <a href="https://github.com/stanwu/marked2u" target="_blank">ソースコード</a> · <a href="https://github.com/stanwu/marked2u/blob/master/LICENSE" target="_blank">PolyForm Noncommercial License</a>',
     'footer.credit': '<a href="https://claude.ai/code" target="_blank">Claude Code</a> AI 支援で開発 · <a href="https://github.com/stanwu/marked2u/blob/master/LICENSE" target="_blank">PolyForm Noncommercial License 1.0.0</a>',
   }
