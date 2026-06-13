@@ -264,11 +264,12 @@
       <div class="platform-exts">.exe (NSIS)<br>.msi (MSI)</div>
       <a class="platform-btn" href="https://github.com/stanwu/marked2u/releases/latest" target="_blank" data-i18n="dl.btn"></a>
     </div>
-    <div class="platform-card" style="opacity:0.55">
-      <div class="platform-icon"><svg width="52" height="52" viewBox="0 0 24 24" fill="#aaaaaa" xmlns="http://www.w3.org/2000/svg"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.029 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg></div>
+    <div class="platform-card" style="position:relative;border-color:rgba(124,108,247,0.25)">
+      <div style="position:absolute;top:12px;right:12px;font-size:0.7rem;font-weight:700;background:rgba(248,113,113,0.15);color:#f87171;border:1px solid rgba(248,113,113,0.4);padding:2px 8px;border-radius:999px" data-i18n="dl.mac.soon"></div>
+      <div class="platform-icon"><svg width="52" height="52" viewBox="0 0 24 24" fill="#cccccc" xmlns="http://www.w3.org/2000/svg"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.029 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg></div>
       <div class="platform-name">macOS</div>
-      <div class="platform-exts" data-i18n="dl.mac.note"></div>
-      <span class="platform-btn" style="background:#444;cursor:not-allowed" data-i18n="dl.mac.btn"></span>
+      <div class="platform-exts" style="color:#e8e8f0" data-i18n="dl.mac.note"></div>
+      <span class="platform-btn" style="background:rgba(124,108,247,0.25);color:#a78bfa;cursor:not-allowed;border:1px solid rgba(124,108,247,0.3)" data-i18n="dl.mac.btn"></span>
     </div>
   </div>
   <p class="download-note" data-i18n="dl.note"></p>
@@ -315,7 +316,7 @@ const I18N = {
     'ss.cap2': '<strong>10 種主題</strong> — 從 Obsidian 到 Grump，快捷鍵一鍵切換',
     'ss.cap3': '<strong>匯出面板</strong> — HTML、PDF、DOCX、MD、OPML，右下角分享鍵觸發',
     'dl.label': '下載', 'dl.title': '選擇你的平台', 'dl.sub': '免費下載，開源，無需帳號', 'dl.btn': '⬇ 下載',
-    'dl.mac.note': '需 Apple 開發者憑證<br>（$99/年）', 'dl.mac.btn': '等註冊蘋果開發者資金到位',
+    'dl.mac.soon': 'Coming Soon', 'dl.mac.note': '需 Apple 開發者憑證<br>（$99/年）', 'dl.mac.btn': '等註冊蘋果開發者資金到位',
     'dl.note': '所有 Release 由 GitHub Actions 自動編譯並完成 ClamAV / Windows Defender 掃毒驗證。<br/>查看 <a href="https://github.com/stanwu/marked2u/actions" target="_blank">Build Log</a> · <a href="https://github.com/stanwu/marked2u" target="_blank">原始碼</a> · <a href="https://github.com/stanwu/marked2u/blob/master/LICENSE" target="_blank">PolyForm Noncommercial License</a>',
     'footer.credit': '本專案 100% 由 <a href="https://claude.ai/code" target="_blank">Claude Code</a> 自主開發 · <a href="https://github.com/stanwu/marked2u/blob/master/LICENSE" target="_blank">PolyForm Noncommercial License 1.0.0</a>',
   },
@@ -352,7 +353,7 @@ const I18N = {
     'ss.cap2': '<strong>10 种主题</strong> — 从 Obsidian 到 Grump，快捷键一键切换',
     'ss.cap3': '<strong>导出面板</strong> — HTML、PDF、DOCX、MD、OPML，右下角分享键触发',
     'dl.label': '下载', 'dl.title': '选择你的平台', 'dl.sub': '免费下载，开源，无需账号', 'dl.btn': '⬇ 下载',
-    'dl.mac.note': '需 Apple 开发者证书<br>（$99/年）', 'dl.mac.btn': '等注册苹果开发者资金到位',
+    'dl.mac.soon': 'Coming Soon', 'dl.mac.note': '需 Apple 开发者证书<br>（$99/年）', 'dl.mac.btn': '等注册苹果开发者资金到位',
     'dl.note': '所有 Release 由 GitHub Actions 自动编译并完成 ClamAV / Windows Defender 杀毒验证。<br/>查看 <a href="https://github.com/stanwu/marked2u/actions" target="_blank">Build Log</a> · <a href="https://github.com/stanwu/marked2u" target="_blank">源码</a> · <a href="https://github.com/stanwu/marked2u/blob/master/LICENSE" target="_blank">PolyForm Noncommercial License</a>',
     'footer.credit': '本项目 100% 由 <a href="https://claude.ai/code" target="_blank">Claude Code</a> 自主开发 · <a href="https://github.com/stanwu/marked2u/blob/master/LICENSE" target="_blank">PolyForm Noncommercial License 1.0.0</a>',
   },
@@ -389,7 +390,7 @@ const I18N = {
     'ss.cap2': '<strong>10 Themes</strong> — From Obsidian to Grump, switch with keyboard shortcuts',
     'ss.cap3': '<strong>Export Panel</strong> — HTML, PDF, DOCX, MD, OPML — triggered by the share icon',
     'dl.label': 'Download', 'dl.title': 'Choose your platform', 'dl.sub': 'Free download. Open source. No account required.', 'dl.btn': '⬇ Download',
-    'dl.mac.note': 'Requires Apple Developer account<br>($99/year)', 'dl.mac.btn': 'Pending funding',
+    'dl.mac.soon': 'Coming Soon', 'dl.mac.note': 'Requires Apple Developer account<br>($99/year)', 'dl.mac.btn': 'Pending funding',
     'dl.note': 'All releases are built by GitHub Actions and scanned by ClamAV / Windows Defender before publishing.<br/><a href="https://github.com/stanwu/marked2u/actions" target="_blank">Build Log</a> · <a href="https://github.com/stanwu/marked2u" target="_blank">Source</a> · <a href="https://github.com/stanwu/marked2u/blob/master/LICENSE" target="_blank">PolyForm Noncommercial License</a>',
     'footer.credit': '100% autonomously built by <a href="https://claude.ai/code" target="_blank">Claude Code</a> · <a href="https://github.com/stanwu/marked2u/blob/master/LICENSE" target="_blank">PolyForm Noncommercial License 1.0.0</a>',
   },
@@ -426,7 +427,7 @@ const I18N = {
     'ss.cap2': '<strong>10 テーマ</strong> — Obsidian から Grump まで、ショートカットで瞬時に切替',
     'ss.cap3': '<strong>エクスポートパネル</strong> — HTML・PDF・DOCX・MD・OPML、右下の共有アイコンから',
     'dl.label': 'ダウンロード', 'dl.title': 'プラットフォームを選択', 'dl.sub': '無料・オープンソース・アカウント不要', 'dl.btn': '⬇ ダウンロード',
-    'dl.mac.note': 'Apple Developer 登録が必要<br>（$99/年）', 'dl.mac.btn': '資金調達後に対応予定',
+    'dl.mac.soon': 'Coming Soon', 'dl.mac.note': 'Apple Developer 登録が必要<br>（$99/年）', 'dl.mac.btn': '資金調達後に対応予定',
     'dl.note': '全リリースは GitHub Actions で自動ビルドし、ClamAV / Windows Defender でウイルススキャン済み。<br/><a href="https://github.com/stanwu/marked2u/actions" target="_blank">Build Log</a> · <a href="https://github.com/stanwu/marked2u" target="_blank">ソースコード</a> · <a href="https://github.com/stanwu/marked2u/blob/master/LICENSE" target="_blank">PolyForm Noncommercial License</a>',
     'footer.credit': '100% <a href="https://claude.ai/code" target="_blank">Claude Code</a> 自律開発 · <a href="https://github.com/stanwu/marked2u/blob/master/LICENSE" target="_blank">PolyForm Noncommercial License 1.0.0</a>',
   }
