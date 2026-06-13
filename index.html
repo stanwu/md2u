@@ -304,6 +304,25 @@
       </div>
     </div>
   </div>
+  <div class="license-card" style="margin-top:16px;background:linear-gradient(135deg,rgba(251,191,36,0.08),rgba(52,211,153,0.06));border-color:rgba(251,191,36,0.3)">
+    <div class="license-card-inner">
+      <div class="license-icon">🍎</div>
+      <div class="license-body">
+        <div class="license-title" data-i18n="spon.title"></div>
+        <div class="license-tiers">
+          <div class="license-tier"><span class="tier-name" data-i18n="spon.t1.name"></span><span class="tier-price" data-i18n="spon.t1.price"></span><span class="tier-desc" data-i18n="spon.t1.desc"></span></div>
+          <div class="license-tier"><span class="tier-name" data-i18n="spon.t2.name"></span><span class="tier-price" data-i18n="spon.t2.price"></span><span class="tier-desc" data-i18n="spon.t2.desc"></span></div>
+          <div class="license-tier"><span class="tier-name" data-i18n="spon.t3.name"></span><span class="tier-price" data-i18n="spon.t3.price"></span><span class="tier-desc" data-i18n="spon.t3.desc"></span></div>
+        </div>
+        <div class="license-email" style="margin-top:14px;display:flex;align-items:center;justify-content:center;gap:8px">
+          <span data-i18n="spon.contact"></span>
+          <button class="copy-email-btn" onclick="(function(b){navigator.clipboard.writeText('purchase-marked2u@stanwu.org').then(function(){b.innerHTML='<svg width=16 height=16 viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'#34d399\' stroke-width=2.5><polyline points=\'20 6 9 17 4 12\'/></svg>';setTimeout(function(){b.innerHTML='<svg width=16 height=16 viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=2><rect x=9 y=9 width=13 height=13 rx=2/><path d=\'M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1\'/></svg>'},1500)})})(this)" title="複製 email" style="background:none;border:none;cursor:pointer;color:var(--muted);padding:2px;display:flex;align-items:center;transition:color 0.2s" onmouseover="this.style.color='var(--accent2)'" onmouseout="this.style.color='var(--muted)'">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
   <p class="download-note" data-i18n="dl.note"></p>
 </section>
 
@@ -354,6 +373,11 @@ const I18N = {
     'lic.t2.name': '團隊（≤10人）', 'lic.t2.price': 'USD $59', 'lic.t2.desc': '中小企業・買斷',
     'lic.t3.name': '企業', 'lic.t3.price': '詢價', 'lic.t3.desc': '大量授權・客製',
     'lic.contact': '聯繫購買：<a href="mailto:purchase-marked2u@stanwu.org">purchase-marked2u@stanwu.org</a>',
+    'spon.title': '贊助 macOS 開發 — 幫助支付 Apple 開發者帳號費用（$99/年）',
+    'spon.t1.name': '小額支持', 'spon.t1.price': 'USD $5', 'spon.t1.desc': '一杯咖啡',
+    'spon.t2.name': '主力贊助', 'spon.t2.price': 'USD $19', 'spon.t2.desc': '5 人即可湊足',
+    'spon.t3.name': '全額贊助', 'spon.t3.price': 'USD $99', 'spon.t3.desc': '一人贊助整年',
+    'spon.contact': '有意贊助請來信：<a href="mailto:purchase-marked2u@stanwu.org">purchase-marked2u@stanwu.org</a>',
     'dl.note': '所有 Release 由 GitHub Actions 自動編譯並完成 ClamAV / Windows Defender 掃毒驗證。<br/>查看 <a href="https://github.com/stanwu/marked2u/actions" target="_blank">Build Log</a> · <a href="https://github.com/stanwu/marked2u" target="_blank">原始碼</a> · <a href="https://github.com/stanwu/marked2u/blob/master/LICENSE" target="_blank">PolyForm Noncommercial License</a>',
     'footer.credit': '本專案由 <a href="https://claude.ai/code" target="_blank">Claude Code</a> AI 輔助開發 · <a href="https://github.com/stanwu/marked2u/blob/master/LICENSE" target="_blank">PolyForm Noncommercial License 1.0.0</a>',
   },
@@ -396,6 +420,11 @@ const I18N = {
     'lic.t2.name': '团队（≤10人）', 'lic.t2.price': 'USD $59', 'lic.t2.desc': '中小企业・买断',
     'lic.t3.name': '企业', 'lic.t3.price': '询价', 'lic.t3.desc': '大量授权・定制',
     'lic.contact': '联系购买：<a href="mailto:purchase-marked2u@stanwu.org">purchase-marked2u@stanwu.org</a>',
+    'spon.title': '赞助 macOS 开发 — 帮助支付 Apple 开发者账号费用（$99/年）',
+    'spon.t1.name': '小额支持', 'spon.t1.price': 'USD $5', 'spon.t1.desc': '一杯咖啡',
+    'spon.t2.name': '主力赞助', 'spon.t2.price': 'USD $19', 'spon.t2.desc': '5 人即可凑足',
+    'spon.t3.name': '全额赞助', 'spon.t3.price': 'USD $99', 'spon.t3.desc': '一人赞助整年',
+    'spon.contact': '有意赞助请来信：<a href="mailto:purchase-marked2u@stanwu.org">purchase-marked2u@stanwu.org</a>',
     'dl.note': '所有 Release 由 GitHub Actions 自动编译并完成 ClamAV / Windows Defender 杀毒验证。<br/>查看 <a href="https://github.com/stanwu/marked2u/actions" target="_blank">Build Log</a> · <a href="https://github.com/stanwu/marked2u" target="_blank">源码</a> · <a href="https://github.com/stanwu/marked2u/blob/master/LICENSE" target="_blank">PolyForm Noncommercial License</a>',
     'footer.credit': '本项目由 <a href="https://claude.ai/code" target="_blank">Claude Code</a> AI 辅助开发 · <a href="https://github.com/stanwu/marked2u/blob/master/LICENSE" target="_blank">PolyForm Noncommercial License 1.0.0</a>',
   },
@@ -438,6 +467,11 @@ const I18N = {
     'lic.t2.name': 'Team (≤10)', 'lic.t2.price': 'USD $59', 'lic.t2.desc': 'SMB · perpetual',
     'lic.t3.name': 'Enterprise', 'lic.t3.price': 'Contact', 'lic.t3.desc': 'Volume · custom',
     'lic.contact': 'Contact: <a href="mailto:purchase-marked2u@stanwu.org">purchase-marked2u@stanwu.org</a>',
+    'spon.title': 'Sponsor macOS Development — help fund the Apple Developer account ($99/year)',
+    'spon.t1.name': 'Coffee', 'spon.t1.price': 'USD $5', 'spon.t1.desc': 'small thanks',
+    'spon.t2.name': 'Supporter', 'spon.t2.price': 'USD $19', 'spon.t2.desc': '5 covers the fee',
+    'spon.t3.name': 'Full Sponsor', 'spon.t3.price': 'USD $99', 'spon.t3.desc': 'covers one year',
+    'spon.contact': 'Interested? Email: <a href="mailto:purchase-marked2u@stanwu.org">purchase-marked2u@stanwu.org</a>',
     'dl.note': 'All releases are built by GitHub Actions and scanned by ClamAV / Windows Defender before publishing.<br/><a href="https://github.com/stanwu/marked2u/actions" target="_blank">Build Log</a> · <a href="https://github.com/stanwu/marked2u" target="_blank">Source</a> · <a href="https://github.com/stanwu/marked2u/blob/master/LICENSE" target="_blank">PolyForm Noncommercial License</a>',
     'footer.credit': 'Built with <a href="https://claude.ai/code" target="_blank">Claude Code</a> AI assistance · <a href="https://github.com/stanwu/marked2u/blob/master/LICENSE" target="_blank">PolyForm Noncommercial License 1.0.0</a>',
   },
@@ -480,6 +514,11 @@ const I18N = {
     'lic.t2.name': 'チーム（≤10人）', 'lic.t2.price': 'USD $59', 'lic.t2.desc': '中小企業・買切',
     'lic.t3.name': 'エンタープライズ', 'lic.t3.price': '要相談', 'lic.t3.desc': '大量・カスタム',
     'lic.contact': '購入連絡先：<a href="mailto:purchase-marked2u@stanwu.org">purchase-marked2u@stanwu.org</a>',
+    'spon.title': 'macOS 開発スポンサー — Apple Developer アカウント費用（$99/年）を支援',
+    'spon.t1.name': 'コーヒー', 'spon.t1.price': 'USD $5', 'spon.t1.desc': '小さな応援',
+    'spon.t2.name': 'サポーター', 'spon.t2.price': 'USD $19', 'spon.t2.desc': '5人で費用を賄える',
+    'spon.t3.name': 'フルスポンサー', 'spon.t3.price': 'USD $99', 'spon.t3.desc': '1年分を一括支援',
+    'spon.contact': 'ご支援はこちらへ：<a href="mailto:purchase-marked2u@stanwu.org">purchase-marked2u@stanwu.org</a>',
     'dl.note': '全リリースは GitHub Actions で自動ビルドし、ClamAV / Windows Defender でウイルススキャン済み。<br/><a href="https://github.com/stanwu/marked2u/actions" target="_blank">Build Log</a> · <a href="https://github.com/stanwu/marked2u" target="_blank">ソースコード</a> · <a href="https://github.com/stanwu/marked2u/blob/master/LICENSE" target="_blank">PolyForm Noncommercial License</a>',
     'footer.credit': '<a href="https://claude.ai/code" target="_blank">Claude Code</a> AI 支援で開発 · <a href="https://github.com/stanwu/marked2u/blob/master/LICENSE" target="_blank">PolyForm Noncommercial License 1.0.0</a>',
   }
