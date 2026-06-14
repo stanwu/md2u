@@ -9,19 +9,19 @@ A lightweight desktop Markdown previewer built with [Tauri](https://tauri.app/).
 ## Screenshots
 
 ### Preview (Obsidian theme)
-![Preview](docs/screenshots/preview.png)
+![Preview](docs/screenshots/en/preview.png)
 > Renders Markdown files with the bottom toolbar showing the current theme and export button.
 
 ### Find Bar (Ctrl+F / Cmd+F)
-![Find Bar](docs/screenshots/find.png)
+![Find Bar](docs/screenshots/en/find.png)
 > Live full-text search with highlighter. Supports Whole words, Case sensitive, and Regex.
 
 ### CSS Theme Switcher
-![CSS Theme Switcher](docs/screenshots/themes.png)
+![CSS Theme Switcher](docs/screenshots/en/themes.png)
 > 10 built-in themes: Obsidian, Swiss, Ink, Multi-Column, GitHub, Amblin, Upstanding Citizen, Lopash, Manuscript, Grump — plus Custom CSS. Switch with ⌘1–⌘9.
 
 ### Export Panel
-![Export Panel](docs/screenshots/export.png)
+![Export Panel](docs/screenshots/en/export.png)
 > Click the share icon (↑) at the bottom right to export as HTML (with CDN), PDF (A4 paginated), DOCX, MD, or OPML.
 
 ## Features
@@ -117,3 +117,8 @@ macOS requires installers to be signed and notarized by an Apple Developer accou
 ## License
 
 This project is licensed under the [GNU General Public License v3.0](LICENSE).
+
+## Policies
+
+- [Code Signing Policy](CODE_SIGNING_POLICY.md)
+- [Privacy Policy](PRIVACY_POLICY.md)
