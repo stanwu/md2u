@@ -109,19 +109,6 @@
     .platform-exts { font-size: 0.82rem; color: var(--muted); margin-bottom: 18px; }
     .platform-btn { display: inline-flex; align-items: center; gap: 6px; background: var(--accent); color: #fff; text-decoration: none; padding: 9px 18px; border-radius: 8px; font-size: 0.85rem; font-weight: 700; transition: background 0.2s; }
     .platform-btn:hover { background: var(--accent2); }
-    .license-card { max-width: 860px; margin: 40px auto 0; background: none; border: none; padding: 0 8px; }
-    .license-card-inner { display: flex; flex-direction: column; align-items: center; gap: 20px; text-align: center; }
-    .license-icon { font-size: 2.4rem; }
-    .license-body { width: 100%; }
-    .license-title { font-size: 1.05rem; font-weight: 700; margin-bottom: 14px; color: var(--text); }
-    .license-tiers { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
-    .license-tier { display: flex; flex-direction: column; background: rgba(255,255,255,0.05); border: 1px solid var(--border); border-radius: 10px; padding: 10px 14px; min-width: 120px; }
-    .tier-name { font-size: 0.78rem; font-weight: 700; color: var(--accent2); margin-bottom: 2px; }
-    .tier-price { font-size: 1.1rem; font-weight: 800; color: var(--text); }
-    .tier-desc { font-size: 0.75rem; color: var(--muted); margin-top: 2px; }
-    .license-email { flex-shrink: 0; font-size: 0.9rem; color: var(--muted); }
-    .license-email a { color: var(--accent2); text-decoration: none; font-weight: 600; }
-    .license-email a:hover { text-decoration: underline; }
     .download-note { margin-top: 36px; font-size: 0.85rem; color: var(--muted); }
     .download-note a { color: var(--accent2); text-decoration: none; }
     .download-note a:hover { text-decoration: underline; }
@@ -285,20 +272,6 @@
       <span class="platform-btn" style="background:rgba(124,108,247,0.25);color:#a78bfa;cursor:not-allowed;border:1px solid rgba(124,108,247,0.3)" data-i18n="dl.mac.btn"></span>
     </div>
   </div>
-  <div class="license-card">
-    <div class="license-card-inner">
-      <div class="license-body">
-        <div class="license-title" data-i18n="lic.title"></div>
-        <div style="font-size:0.88rem;color:var(--muted);margin-bottom:14px" data-i18n="lic.sub"></div>
-        <div class="license-email" style="display:flex;align-items:center;justify-content:center;gap:8px">
-          <span data-i18n="lic.contact"></span>
-          <button class="copy-email-btn" onclick="(function(b){navigator.clipboard.writeText('purchase-marked2u@stanwu.org').then(function(){b.innerHTML='<svg width=16 height=16 viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'#34d399\' stroke-width=2.5><polyline points=\'20 6 9 17 4 12\'/></svg>';setTimeout(function(){b.innerHTML='<svg width=16 height=16 viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=2><rect x=9 y=9 width=13 height=13 rx=2/><path d=\'M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1\'/></svg>'},1500)})})(this)" title="複製 email" style="background:none;border:none;cursor:pointer;color:var(--muted);padding:2px;display:flex;align-items:center;transition:color 0.2s" onmouseover="this.style.color='var(--accent2)'" onmouseout="this.style.color='var(--muted)'">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
   <p class="download-note" data-i18n="dl.note"></p>
 </section>
 
@@ -337,26 +310,15 @@ const I18N = {
     'feat.f3.title': '全文搜尋', 'feat.f3.body': 'Ctrl+F / Cmd+F 開啟 Find Bar，螢光筆即時標示，支援 Whole words、Case sensitive、Regex。',
     'feat.f4.title': 'Mermaid 圖表', 'feat.f4.body': '直接在 Markdown 中渲染流程圖、時序圖、甘特圖等，export 時 SVG 完整保留。',
     'feat.f5.title': '一鍵匯出', 'feat.f5.body': '支援 HTML（含 CDN）、PDF（A4 分頁）、DOCX、MD、OPML，點圖示即可匯出。',
-    'feat.f6.title': '完全開源，非商業免費', 'feat.f6.body': '採用 PolyForm Noncommercial License，個人與非商業用途完全免費，原始碼在 GitHub 公開，歡迎 PR。',
+    'feat.f6.title': '完全開源，永久免費', 'feat.f6.body': '採用 GPL v3 授權，任何人皆可免費使用（含商業用途），原始碼在 GitHub 公開，歡迎 PR。',
     'ss.label': '截圖', 'ss.title': '看起來就是這樣', 'ss.sub': '乾淨、清晰，跟你在 Obsidian 看到的一模一樣',
     'ss.cap1': '<strong>Find Bar</strong> — Ctrl+F 全文搜尋，螢光筆即時標示，支援 Regex',
     'ss.cap2': '<strong>10 種主題</strong> — 從 Obsidian 到 Grump，快捷鍵一鍵切換',
     'ss.cap3': '<strong>匯出面板</strong> — HTML、PDF、DOCX、MD、OPML，右下角分享鍵觸發',
     'dl.label': '下載', 'dl.title': '選擇你的平台', 'dl.sub': '免費下載，開源，無需帳號', 'dl.btn': '⬇ 下載',
     'dl.mac.soon': 'Coming Soon', 'dl.mac.note': '需 Apple 開發者憑證<br>（$99/年）', 'dl.mac.btn': '等蘋果開發者資金到位',
-    'lic.title': '商業授權 — 用於商業用途請購買授權',
-    'lic.sub': '如果本工具對你的商業活動產生巨大效益，何不跟作者分享這個喜悅？',
-    'lic.t1.name': '個人商業', 'lic.t1.price': 'USD $19', 'lic.t1.desc': '單人・買斷',
-    'lic.t2.name': '團隊（≤10人）', 'lic.t2.price': 'USD $59', 'lic.t2.desc': '中小企業・買斷',
-    'lic.t3.name': '企業', 'lic.t3.price': '詢價', 'lic.t3.desc': '大量授權・客製',
-    'lic.contact': '聯繫購買：<a href="mailto:purchase-marked2u@stanwu.org">purchase-marked2u@stanwu.org</a>',
-    'spon.title': '贊助 macOS 開發 — 幫助支付 Apple 開發者帳號費用（$99/年）',
-    'spon.t1.name': '小額支持', 'spon.t1.price': 'USD $5', 'spon.t1.desc': '一杯咖啡',
-    'spon.t2.name': '主力贊助', 'spon.t2.price': 'USD $19', 'spon.t2.desc': '5 人即可湊足',
-    'spon.t3.name': '全額贊助', 'spon.t3.price': 'USD $99', 'spon.t3.desc': '一人贊助整年',
-    'spon.contact': '有意贊助請來信：<a href="mailto:purchase-marked2u@stanwu.org">purchase-marked2u@stanwu.org</a>',
-    'dl.note': '所有 Release 由 GitHub Actions 自動編譯並完成 ClamAV / Windows Defender 掃毒驗證。<br/>查看 <a href="https://github.com/stanwu/marked2u/actions" target="_blank">Build Log</a> · <a href="https://github.com/stanwu/marked2u" target="_blank">原始碼</a> · <a href="https://github.com/stanwu/marked2u/blob/master/LICENSE" target="_blank">PolyForm Noncommercial License</a><br/><br/>⚠️ <strong>若防毒軟體出現警告</strong>：本軟體尚未購買程式碼簽署憑證，部分啟發式掃描引擎可能誤判未簽署的開源程式。Windows Defender 與 ClamAV 均已通過。原始碼完全公開，可自行驗證或從原始碼編譯。',
-    'footer.credit': '本專案由 <a href="https://claude.ai/code" target="_blank">Claude Code</a> AI 輔助開發 · <a href="https://github.com/stanwu/marked2u/blob/master/LICENSE" target="_blank">PolyForm Noncommercial License 1.0.0</a>',
+    'dl.note': '所有 Release 由 GitHub Actions 自動編譯並完成 ClamAV / Windows Defender 掃毒驗證。<br/>查看 <a href="https://github.com/stanwu/marked2u/actions" target="_blank">Build Log</a> · <a href="https://github.com/stanwu/marked2u" target="_blank">原始碼</a> · <a href="https://github.com/stanwu/marked2u/blob/master/LICENSE" target="_blank">GNU GPL v3</a><br/><br/>⚠️ <strong>若防毒軟體出現警告</strong>：本軟體尚未購買程式碼簽署憑證，部分啟發式掃描引擎可能誤判未簽署的開源程式。Windows Defender 與 ClamAV 均已通過。原始碼完全公開，可自行驗證或從原始碼編譯。',
+    'footer.credit': '本專案由 <a href="https://claude.ai/code" target="_blank">Claude Code</a> AI 輔助開發 · <a href="https://github.com/stanwu/marked2u/blob/master/LICENSE" target="_blank">GNU General Public License v3.0</a>',
   },
   'zh-CN': {
     'nav.why': '为什么选择', 'nav.features': '功能', 'nav.screenshots': '截图', 'nav.download': '下载', 'nav.cta': '免费下载',
@@ -385,26 +347,15 @@ const I18N = {
     'feat.f3.title': '全文搜索', 'feat.f3.body': 'Ctrl+F / Cmd+F 打开 Find Bar，荧光笔实时标注，支持 Whole words、Case sensitive、Regex。',
     'feat.f4.title': 'Mermaid 图表', 'feat.f4.body': '直接在 Markdown 中渲染流程图、时序图、甘特图等，export 时 SVG 完整保留。',
     'feat.f5.title': '一键导出', 'feat.f5.body': '支持 HTML（含 CDN）、PDF（A4 分页）、DOCX、MD、OPML，点图标即可导出。',
-    'feat.f6.title': '完全开源，非商业免费', 'feat.f6.body': '采用 PolyForm Noncommercial License，个人与非商业用途完全免费，源码在 GitHub 公开，欢迎 PR。',
+    'feat.f6.title': '完全开源，永久免费', 'feat.f6.body': '采用 GPL v3 授权，任何人均可免费使用（含商业用途），源码在 GitHub 公开，欢迎 PR。',
     'ss.label': '截图', 'ss.title': '看起来就是这样', 'ss.sub': '干净、清晰，跟你在 Obsidian 看到的一模一样',
     'ss.cap1': '<strong>Find Bar</strong> — Ctrl+F 全文搜索，荧光笔实时标注，支持 Regex',
     'ss.cap2': '<strong>10 种主题</strong> — 从 Obsidian 到 Grump，快捷键一键切换',
     'ss.cap3': '<strong>导出面板</strong> — HTML、PDF、DOCX、MD、OPML，右下角分享键触发',
     'dl.label': '下载', 'dl.title': '选择你的平台', 'dl.sub': '免费下载，开源，无需账号', 'dl.btn': '⬇ 下载',
     'dl.mac.soon': 'Coming Soon', 'dl.mac.note': '需 Apple 开发者证书<br>（$99/年）', 'dl.mac.btn': '等苹果开发者资金到位',
-    'lic.title': '商业授权 — 商业用途请购买授权',
-    'lic.sub': '如果本工具对你的商业活动产生了巨大效益，何不跟作者分享这份喜悦？',
-    'lic.t1.name': '个人商业', 'lic.t1.price': 'USD $19', 'lic.t1.desc': '单人・买断',
-    'lic.t2.name': '团队（≤10人）', 'lic.t2.price': 'USD $59', 'lic.t2.desc': '中小企业・买断',
-    'lic.t3.name': '企业', 'lic.t3.price': '询价', 'lic.t3.desc': '大量授权・定制',
-    'lic.contact': '联系购买：<a href="mailto:purchase-marked2u@stanwu.org">purchase-marked2u@stanwu.org</a>',
-    'spon.title': '赞助 macOS 开发 — 帮助支付 Apple 开发者账号费用（$99/年）',
-    'spon.t1.name': '小额支持', 'spon.t1.price': 'USD $5', 'spon.t1.desc': '一杯咖啡',
-    'spon.t2.name': '主力赞助', 'spon.t2.price': 'USD $19', 'spon.t2.desc': '5 人即可凑足',
-    'spon.t3.name': '全额赞助', 'spon.t3.price': 'USD $99', 'spon.t3.desc': '一人赞助整年',
-    'spon.contact': '有意赞助请来信：<a href="mailto:purchase-marked2u@stanwu.org">purchase-marked2u@stanwu.org</a>',
-    'dl.note': '所有 Release 由 GitHub Actions 自动编译并完成 ClamAV / Windows Defender 杀毒验证。<br/>查看 <a href="https://github.com/stanwu/marked2u/actions" target="_blank">Build Log</a> · <a href="https://github.com/stanwu/marked2u" target="_blank">源码</a> · <a href="https://github.com/stanwu/marked2u/blob/master/LICENSE" target="_blank">PolyForm Noncommercial License</a><br/><br/>⚠️ <strong>若防病毒软件出现警告</strong>：本软件尚未购买代码签名证书，部分启发式扫描引擎可能误判未签名的开源程序。Windows Defender 与 ClamAV 均已通过。源码完全公开，可自行验证或从源码编译。',
-    'footer.credit': '本项目由 <a href="https://claude.ai/code" target="_blank">Claude Code</a> AI 辅助开发 · <a href="https://github.com/stanwu/marked2u/blob/master/LICENSE" target="_blank">PolyForm Noncommercial License 1.0.0</a>',
+    'dl.note': '所有 Release 由 GitHub Actions 自动编译并完成 ClamAV / Windows Defender 杀毒验证。<br/>查看 <a href="https://github.com/stanwu/marked2u/actions" target="_blank">Build Log</a> · <a href="https://github.com/stanwu/marked2u" target="_blank">源码</a> · <a href="https://github.com/stanwu/marked2u/blob/master/LICENSE" target="_blank">GNU GPL v3</a><br/><br/>⚠️ <strong>若防病毒软件出现警告</strong>：本软件尚未购买代码签名证书，部分启发式扫描引擎可能误判未签名的开源程序。Windows Defender 与 ClamAV 均已通过。源码完全公开，可自行验证或从源码编译。',
+    'footer.credit': '本项目由 <a href="https://claude.ai/code" target="_blank">Claude Code</a> AI 辅助开发 · <a href="https://github.com/stanwu/marked2u/blob/master/LICENSE" target="_blank">GNU General Public License v3.0</a>',
   },
   'en': {
     'nav.why': 'Why', 'nav.features': 'Features', 'nav.screenshots': 'Screenshots', 'nav.download': 'Download', 'nav.cta': 'Free Download',
@@ -433,26 +384,15 @@ const I18N = {
     'feat.f3.title': 'Full-Text Find', 'feat.f3.body': 'Ctrl+F / Cmd+F opens Find Bar with live highlight. Supports Whole words, Case sensitive, Regex.',
     'feat.f4.title': 'Mermaid Diagrams', 'feat.f4.body': 'Render flowcharts, sequence diagrams, Gantt charts inline. SVG preserved in exports.',
     'feat.f5.title': 'One-Click Export', 'feat.f5.body': 'Export to HTML (with CDN), PDF (A4 paginated), DOCX, MD, OPML with one click.',
-    'feat.f6.title': 'Open Source, Free for Personal Use', 'feat.f6.body': 'PolyForm Noncommercial License — free for personal and non-commercial use. Source on GitHub, PRs welcome.',
+    'feat.f6.title': 'Open Source, Free for Everyone', 'feat.f6.body': 'GNU GPL v3 — free for any use including commercial. Source on GitHub, PRs welcome.',
     'ss.label': 'Screenshots', 'ss.title': "Here's what it looks like", 'ss.sub': 'Clean, sharp — identical to how Obsidian renders your notes',
     'ss.cap1': '<strong>Find Bar</strong> — Ctrl+F full-text search with live highlight, Regex support',
     'ss.cap2': '<strong>10 Themes</strong> — From Obsidian to Grump, switch with keyboard shortcuts',
     'ss.cap3': '<strong>Export Panel</strong> — HTML, PDF, DOCX, MD, OPML — triggered by the share icon',
     'dl.label': 'Download', 'dl.title': 'Choose your platform', 'dl.sub': 'Free download. Open source. No account required.', 'dl.btn': '⬇ Download',
     'dl.mac.soon': 'Coming Soon', 'dl.mac.note': 'Requires Apple Developer account<br>($99/year)', 'dl.mac.btn': 'Pending funding',
-    'lic.title': 'Commercial License — required for commercial use',
-    'lic.sub': 'If this tool has made a real difference to your business, why not share that joy with the developer?',
-    'lic.t1.name': 'Individual', 'lic.t1.price': 'USD $19', 'lic.t1.desc': '1 user · perpetual',
-    'lic.t2.name': 'Team (≤10)', 'lic.t2.price': 'USD $59', 'lic.t2.desc': 'SMB · perpetual',
-    'lic.t3.name': 'Enterprise', 'lic.t3.price': 'Contact', 'lic.t3.desc': 'Volume · custom',
-    'lic.contact': 'Contact: <a href="mailto:purchase-marked2u@stanwu.org">purchase-marked2u@stanwu.org</a>',
-    'spon.title': 'Sponsor macOS Development — help fund the Apple Developer account ($99/year)',
-    'spon.t1.name': 'Coffee', 'spon.t1.price': 'USD $5', 'spon.t1.desc': 'small thanks',
-    'spon.t2.name': 'Supporter', 'spon.t2.price': 'USD $19', 'spon.t2.desc': '5 covers the fee',
-    'spon.t3.name': 'Full Sponsor', 'spon.t3.price': 'USD $99', 'spon.t3.desc': 'covers one year',
-    'spon.contact': 'Interested? Email: <a href="mailto:purchase-marked2u@stanwu.org">purchase-marked2u@stanwu.org</a>',
-    'dl.note': 'All releases are built by GitHub Actions and scanned by ClamAV / Windows Defender before publishing.<br/><a href="https://github.com/stanwu/marked2u/actions" target="_blank">Build Log</a> · <a href="https://github.com/stanwu/marked2u" target="_blank">Source</a> · <a href="https://github.com/stanwu/marked2u/blob/master/LICENSE" target="_blank">PolyForm Noncommercial License</a><br/><br/>⚠️ <strong>If your antivirus shows a warning</strong>: This app is not yet code-signed. Some heuristic scanners may flag unsigned open-source binaries as suspicious. Windows Defender and ClamAV both pass. Source code is fully public — verify it yourself or build from source.',
-    'footer.credit': 'Built with <a href="https://claude.ai/code" target="_blank">Claude Code</a> AI assistance · <a href="https://github.com/stanwu/marked2u/blob/master/LICENSE" target="_blank">PolyForm Noncommercial License 1.0.0</a>',
+    'dl.note': 'All releases are built by GitHub Actions and scanned by ClamAV / Windows Defender before publishing.<br/><a href="https://github.com/stanwu/marked2u/actions" target="_blank">Build Log</a> · <a href="https://github.com/stanwu/marked2u" target="_blank">Source</a> · <a href="https://github.com/stanwu/marked2u/blob/master/LICENSE" target="_blank">GNU GPL v3</a><br/><br/>⚠️ <strong>If your antivirus shows a warning</strong>: This app is not yet code-signed. Some heuristic scanners may flag unsigned open-source binaries as suspicious. Windows Defender and ClamAV both pass. Source code is fully public — verify it yourself or build from source.',
+    'footer.credit': 'Built with <a href="https://claude.ai/code" target="_blank">Claude Code</a> AI assistance · <a href="https://github.com/stanwu/marked2u/blob/master/LICENSE" target="_blank">GNU General Public License v3.0</a>',
   },
   'ja': {
     'nav.why': '選ぶ理由', 'nav.features': '機能', 'nav.screenshots': 'スクリーンショット', 'nav.download': 'ダウンロード', 'nav.cta': '無料ダウンロード',
@@ -481,26 +421,15 @@ const I18N = {
     'feat.f3.title': '全文検索', 'feat.f3.body': 'Ctrl+F / Cmd+F で Find Bar を開き、マーカーでリアルタイム強調表示。Whole words・大文字小文字・Regex 対応。',
     'feat.f4.title': 'Mermaid 図表', 'feat.f4.body': 'フローチャート・シーケンス図・ガントチャートをインラインレンダリング。エクスポート時も SVG を保持。',
     'feat.f5.title': 'ワンクリックエクスポート', 'feat.f5.body': 'HTML（CDN 付き）・PDF（A4 ページ区切り）・DOCX・MD・OPML をアイコンクリックでエクスポート。',
-    'feat.f6.title': '完全オープンソース・個人利用無料', 'feat.f6.body': 'PolyForm Noncommercial License 採用。個人・非商業利用は完全無料。ソースは GitHub 公開、PR 歓迎。',
+    'feat.f6.title': '完全オープンソース・永久無料', 'feat.f6.body': 'GNU GPL v3 採用。商用・個人問わず誰でも無料で利用可能。ソースは GitHub 公開、PR 歓迎。',
     'ss.label': 'スクリーンショット', 'ss.title': 'こんな感じです', 'ss.sub': 'Obsidian と全く同じ、クリーンで見やすい表示',
     'ss.cap1': '<strong>Find Bar</strong> — Ctrl+F 全文検索、リアルタイムハイライト、Regex 対応',
     'ss.cap2': '<strong>10 テーマ</strong> — Obsidian から Grump まで、ショートカットで瞬時に切替',
     'ss.cap3': '<strong>エクスポートパネル</strong> — HTML・PDF・DOCX・MD・OPML、右下の共有アイコンから',
     'dl.label': 'ダウンロード', 'dl.title': 'プラットフォームを選択', 'dl.sub': '無料・オープンソース・アカウント不要', 'dl.btn': '⬇ ダウンロード',
     'dl.mac.soon': 'Coming Soon', 'dl.mac.note': 'Apple Developer 登録が必要<br>（$99/年）', 'dl.mac.btn': '資金調達後に対応予定',
-    'lic.title': '商用ライセンス — 商用利用には購入が必要',
-    'lic.sub': 'このツールがビジネスに大きな価値をもたらしたなら、その喜びを作者と分かち合いませんか？',
-    'lic.t1.name': '個人商用', 'lic.t1.price': 'USD $19', 'lic.t1.desc': '1ユーザー・買切',
-    'lic.t2.name': 'チーム（≤10人）', 'lic.t2.price': 'USD $59', 'lic.t2.desc': '中小企業・買切',
-    'lic.t3.name': 'エンタープライズ', 'lic.t3.price': '要相談', 'lic.t3.desc': '大量・カスタム',
-    'lic.contact': '購入連絡先：<a href="mailto:purchase-marked2u@stanwu.org">purchase-marked2u@stanwu.org</a>',
-    'spon.title': 'macOS 開発スポンサー — Apple Developer アカウント費用（$99/年）を支援',
-    'spon.t1.name': 'コーヒー', 'spon.t1.price': 'USD $5', 'spon.t1.desc': '小さな応援',
-    'spon.t2.name': 'サポーター', 'spon.t2.price': 'USD $19', 'spon.t2.desc': '5人で費用を賄える',
-    'spon.t3.name': 'フルスポンサー', 'spon.t3.price': 'USD $99', 'spon.t3.desc': '1年分を一括支援',
-    'spon.contact': 'ご支援はこちらへ：<a href="mailto:purchase-marked2u@stanwu.org">purchase-marked2u@stanwu.org</a>',
-    'dl.note': '全リリースは GitHub Actions で自動ビルドし、ClamAV / Windows Defender でウイルススキャン済み。<br/><a href="https://github.com/stanwu/marked2u/actions" target="_blank">Build Log</a> · <a href="https://github.com/stanwu/marked2u" target="_blank">ソースコード</a> · <a href="https://github.com/stanwu/marked2u/blob/master/LICENSE" target="_blank">PolyForm Noncommercial License</a><br/><br/>⚠️ <strong>ウイルス対策ソフトが警告を表示した場合</strong>：本アプリはコード署名未取得のため、一部のヒューリスティックスキャナーが未署名の OSS バイナリを誤検知することがあります。Windows Defender・ClamAV はいずれも通過済み。ソースコードは完全公開されており、自己検証またはソースからのビルドが可能です。',
-    'footer.credit': '<a href="https://claude.ai/code" target="_blank">Claude Code</a> AI 支援で開発 · <a href="https://github.com/stanwu/marked2u/blob/master/LICENSE" target="_blank">PolyForm Noncommercial License 1.0.0</a>',
+    'dl.note': '全リリースは GitHub Actions で自動ビルドし、ClamAV / Windows Defender でウイルススキャン済み。<br/><a href="https://github.com/stanwu/marked2u/actions" target="_blank">Build Log</a> · <a href="https://github.com/stanwu/marked2u" target="_blank">ソースコード</a> · <a href="https://github.com/stanwu/marked2u/blob/master/LICENSE" target="_blank">GNU GPL v3</a><br/><br/>⚠️ <strong>ウイルス対策ソフトが警告を表示した場合</strong>：本アプリはコード署名未取得のため、一部のヒューリスティックスキャナーが未署名の OSS バイナリを誤検知することがあります。Windows Defender・ClamAV はいずれも通過済み。ソースコードは完全公開されており、自己検証またはソースからのビルドが可能です。',
+    'footer.credit': '<a href="https://claude.ai/code" target="_blank">Claude Code</a> AI 支援で開発 · <a href="https://github.com/stanwu/marked2u/blob/master/LICENSE" target="_blank">GNU General Public License v3.0</a>',
   }
 }
 
