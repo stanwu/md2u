@@ -163,7 +163,7 @@
       <span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span>
       <span>README.md — marked2u</span>
     </div>
-    <img src="screenshots/preview.png" alt="marked2u preview" />
+    <img id="hero-screenshot" src="screenshots/preview.png" alt="marked2u preview" />
   </div>
 </section>
 
@@ -232,15 +232,15 @@
     <p class="section-sub" style="margin-bottom:48px" data-i18n="ss.sub"></p>
     <div class="gallery-grid">
       <div class="gallery-item">
-        <img src="screenshots/find.png" alt="Find Bar" />
+        <img class="lang-screenshot" data-name="find" src="screenshots/find.png" alt="Find Bar" />
         <div class="gallery-caption" data-i18n="ss.cap1"></div>
       </div>
       <div class="gallery-item">
-        <img src="screenshots/themes.png" alt="Themes" />
+        <img class="lang-screenshot" data-name="themes" src="screenshots/themes.png" alt="Themes" />
         <div class="gallery-caption" data-i18n="ss.cap2"></div>
       </div>
       <div class="gallery-item" style="grid-column: 1 / -1">
-        <img src="screenshots/export.png" alt="Export" />
+        <img class="lang-screenshot" data-name="export" src="screenshots/export.png" alt="Export" />
         <div class="gallery-caption" data-i18n="ss.cap3"></div>
       </div>
     </div>
@@ -455,6 +455,12 @@ function applyLang(lang) {
     btn.classList.toggle('active', btn.dataset.lang === lang)
   })
   document.documentElement.lang = lang
+  const ssDir = (lang === 'zh-TW' || lang === 'zh-CN') ? 'screenshots' : 'screenshots/en'
+  const hero = document.getElementById('hero-screenshot')
+  if (hero) hero.src = ssDir + '/preview.png'
+  document.querySelectorAll('.lang-screenshot').forEach(img => {
+    img.src = ssDir + '/' + img.dataset.name + '.png'
+  })
 }
 
 document.querySelectorAll('.lang-btn').forEach(btn => {
