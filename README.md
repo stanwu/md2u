@@ -111,3 +111,7 @@ macOS 要求安裝檔必須經過 Apple 開發者簽章與 Notarization，未簽
 | 圖表 | Mermaid |
 | 語法高亮 | highlight.js |
 | 後端 | Rust (`notify`、`tauri-plugin-window-state`) |
+
+## 授權
+
+本專案採用 [GNU General Public License v3.0](LICENSE)。
