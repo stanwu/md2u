@@ -4,7 +4,7 @@
 
 A lightweight desktop Markdown previewer built with [Tauri](https://tauri.app/). Features live file watching, Mermaid diagrams, syntax highlighting, and Obsidian-style Callouts.
 
-**[繁體中文 README](README.zh-TW.md)**
+**[⬇ Download Latest Release](https://github.com/stanwu/marked2u/releases/latest)** · [Landing Page](https://marked2u.stanwu.org)
 
 ## Screenshots
 
@@ -122,3 +122,7 @@ This project is licensed under the [GNU General Public License v3.0](LICENSE).
 
 - [Code Signing Policy](CODE_SIGNING_POLICY.md)
 - [Privacy Policy](PRIVACY_POLICY.md)
+
+---
+
+[繁體中文 README](README.zh-TW.md)
