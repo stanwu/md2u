@@ -1,0 +1,33 @@
+User-agent: *
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: YisouSpider
+Disallow: /
+
+User-agent: EasouSpider
+Disallow: /
+
+User-agent: EtaoSpider
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+Sitemap: https://md2u.stanwu.org/sitemap.xml
+
+# AI agent reference: /llms.txt

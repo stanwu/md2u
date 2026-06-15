@@ -1,0 +1,45 @@
+# md2u
+
+> A lightweight, open-source, cross-platform Markdown previewer for Windows and Linux.
+
+## What it does
+
+md2u renders .md files the way they were meant to look — the same rendering engine as Obsidian. Double-click a .md file and see clean, formatted output instead of raw symbols.
+
+Built with Tauri. Free. No account required. GPL v3.
+
+## Key features
+
+- Obsidian-style Markdown rendering
+- 10 built-in CSS themes (Obsidian, GitHub, Swiss, Ink, Multi-Column, Grump, and more) + Custom CSS
+- Live reload — auto-updates on file save
+- Drag & drop or CLI: `md2u yourfile.md`
+- Find bar (Ctrl+F / Cmd+F) with Whole words, Case sensitive, Regex
+- Mermaid diagrams (flowcharts, sequence diagrams, Gantt charts)
+- Obsidian-style Callouts (`[!NOTE]`, `[!WARNING]`, etc.)
+- One-click export: HTML (with CDN), PDF (A4 paginated), DOCX, MD, OPML
+
+## Platform support
+
+- Windows: x64, ARM64 (.exe / .msi)
+- Linux: Debian/Ubuntu (.deb), Fedora/RHEL (.rpm)
+- macOS: planned
+
+## Links
+
+- Landing page: https://md2u.stanwu.org/
+- Download: https://github.com/stanwu/md2u/releases/latest
+- Source code: https://github.com/stanwu/md2u
+- License: GNU General Public License v3.0
+- Author: Stan Wu — https://stanwu.org/
+
+## Language versions
+
+- English: https://md2u.stanwu.org/
+- 繁體中文: https://md2u.stanwu.org/zh-TW/
+- 简体中文: https://md2u.stanwu.org/zh-CN/
+- 日本語: https://md2u.stanwu.org/ja/
+
+## Why md2u exists
+
+Most Markdown tools are either macOS-only (Marked2), too heavy (VS Code, Obsidian, Typora), closed-source, or paid. md2u fills the gap: a dedicated previewer for Windows and Linux that opens fast, stays out of the way, and renders files correctly.
