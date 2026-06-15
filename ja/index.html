@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="ja">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,7 +7,7 @@
   <meta name="description" content="md2u is a free, open-source Markdown previewer for Windows and Linux. Built with Tauri, uses the same rendering engine as Obsidian. Supports syntax highlighting, Mermaid diagrams, themes, and PDF export." />
   <meta name="keywords" content="markdown previewer, markdown viewer, windows markdown, linux markdown, obsidian rendering, tauri app, open source markdown, md2u" />
   <meta name="author" content="Stan Wu" />
-  <link rel="canonical" href="https://md2u.stanwu.org/" />
+  <link rel="canonical" href="https://md2u.stanwu.org/ja/" />
   <link rel="alternate" hreflang="en" href="https://md2u.stanwu.org/" />
   <link rel="alternate" hreflang="zh-Hant" href="https://md2u.stanwu.org/zh-TW/" />
   <link rel="alternate" hreflang="zh-Hans" href="https://md2u.stanwu.org/zh-CN/" />
@@ -183,29 +183,29 @@
 <nav>
   <span class="nav-logo">md2u</span>
   <div class="nav-links">
-    <a href="#pain" data-i18n="nav.why">Why</a>
-    <a href="#features" data-i18n="nav.features">Features</a>
-    <a href="#screenshots" data-i18n="nav.screenshots">Screenshots</a>
-    <a href="#download" data-i18n="nav.download">Download</a>
+    <a href="#pain" data-i18n="nav.why">選ぶ理由</a>
+    <a href="#features" data-i18n="nav.features">機能</a>
+    <a href="#screenshots" data-i18n="nav.screenshots">スクリーンショット</a>
+    <a href="#download" data-i18n="nav.download">ダウンロード</a>
   </div>
   <div class="nav-right">
         <div class="lang-switcher">
       <a class="lang-btn" href="/zh-TW/">繁中</a>
       <a class="lang-btn" href="/zh-CN/">简中</a>
-      <a class="lang-btn active" href="/">EN</a>
-      <a class="lang-btn" href="/ja/">日本語</a>
+      <a class="lang-btn" href="/">EN</a>
+      <a class="lang-btn active" href="/ja/">日本語</a>
     </div>
-    <a class="nav-cta" href="#download" data-i18n="nav.cta">Free Download</a>
+    <a class="nav-cta" href="#download" data-i18n="nav.cta">無料ダウンロード</a>
   </div>
 </nav>
 
 <section class="hero">
-  <div class="hero-badge" data-i18n="hero.badge">✦ Open Source · Free · Cross-Platform</div>
-  <h1 data-i18n="hero.h1">Markdown Preview<br/>Done Right</h1>
-  <p class="hero-tagline" data-i18n="hero.tagline">A lightweight, fast, open-source desktop Markdown previewer with Obsidian-style rendering</p>
-  <p class="hero-sub" data-i18n="hero.sub">Windows · Linux · macOS (planned)</p>
+  <div class="hero-badge" data-i18n="hero.badge">✦ オープンソース · 無料 · クロスプラットフォーム</div>
+  <h1 data-i18n="hero.h1">Markdown プレビュー<br/>これが正解</h1>
+  <p class="hero-tagline" data-i18n="hero.tagline">軽量・高速・オープンソースのデスクトップ Markdown プレビューアー。Obsidian と同じレンダリングエンジンを標準搭載</p>
+  <p class="hero-sub" data-i18n="hero.sub">Windows · Linux 対応 · macOS（予定）</p>
   <div class="hero-actions">
-    <a class="btn-primary" href="#download" data-i18n="hero.download">⬇ Download Now</a>
+    <a class="btn-primary" href="#download" data-i18n="hero.download">⬇ 今すぐダウンロード</a>
     <a class="btn-secondary" href="https://github.com/stanwu/md2u" target="_blank">★ GitHub</a>
   </div>
   <div class="hero-screenshot">
@@ -220,156 +220,156 @@
         <div class="win-btn close">&#10005;</div>
       </div>
     </div>
-    <img id="hero-screenshot" src="screenshots/en/preview.png" alt="md2u preview" />
+    <img id="hero-screenshot" src="../screenshots/en/preview.png" alt="md2u preview" />
   </div>
 </section>
 
 <section class="pain" id="pain">
-  <div class="section-label" data-i18n="pain.label">Pain Points</div>
-  <h2 class="section-title" data-i18n="pain.title">Sound familiar?</h2>
-  <p class="section-sub" data-i18n="pain.sub">Every Markdown tool out there is either macOS-only, bloated, ugly, or closed-source</p>
+  <div class="section-label" data-i18n="pain.label">課題</div>
+  <h2 class="section-title" data-i18n="pain.title">心当たりありませんか？</h2>
+  <p class="section-sub" data-i18n="pain.sub">既存の Markdown ツールは macOS 専用・重すぎ・見た目が悪い・クローズドソースのどれか</p>
   <div class="pain-grid">
     <div class="pain-card">
       <div class="pain-icon"><svg width="48" height="48" viewBox="0 0 24 24" fill="#0078d4" xmlns="http://www.w3.org/2000/svg"><path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801"/></svg></div>
-      <span class="tag-bad" data-i18n="pain.p1.tag">Windows</span>
-      <h3 data-i18n="pain.p1.title">Windows Notepad renders Markdown terribly</h3>
-      <p data-i18n="pain.p1.body">Windows 11 Notepad technically supports Markdown, but the rendering is rough — bad fonts, poor spacing, ugly code blocks. Reviewing docs in it feels like punishment.</p>
+      <span class="tag-bad" data-i18n="pain.p1.tag">Windows の問題</span>
+      <h3 data-i18n="pain.p1.title">メモ帳の Markdown レンダリングが残念すぎる</h3>
+      <p data-i18n="pain.p1.body">Windows 11 のメモ帳は Markdown に対応しているものの、レンダリング品質が低く、フォント・余白・コードブロックが見苦しい。ドキュメントのレビューには使えない。</p>
     </div>
     <div class="pain-card">
       <div class="pain-icon"><svg width="48" height="48" viewBox="0 0 24 24" fill="#aaaaaa" xmlns="http://www.w3.org/2000/svg"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.029 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg></div>
-      <span class="tag-bad" data-i18n="pain.p2.tag">macOS Only</span>
-      <h3 data-i18n="pain.p2.title">Marked2 is great — but macOS only</h3>
-      <p data-i18n="pain.p2.body">Marked2 is the gold standard for Markdown preview on macOS: rich themes, powerful export. But switch to Windows or Linux and that experience disappears entirely.</p>
+      <span class="tag-bad" data-i18n="pain.p2.tag">macOS 専用</span>
+      <h3 data-i18n="pain.p2.title">Marked2 は最高だが macOS だけ</h3>
+      <p data-i18n="pain.p2.body">Marked2 は macOS で圧倒的な人気を誇る Markdown プレビューアーで、テーマも豊富でエクスポートも強力。しかし Windows や Linux では使えない。</p>
     </div>
     <div class="pain-card">
       <div class="pain-icon">🐘</div>
-      <span class="tag-bad" data-i18n="pain.p3.tag">Too Heavy</span>
-      <h3 data-i18n="pain.p3.title">Other tools are overkill</h3>
-      <p data-i18n="pain.p3.body">VS Code, Typora, Obsidian are powerful but slow to start and memory-hungry. You just want to quickly preview a .md file — not launch an entire editor ecosystem.</p>
+      <span class="tag-bad" data-i18n="pain.p3.tag">重すぎ</span>
+      <h3 data-i18n="pain.p3.title">他のツールは大げさすぎる</h3>
+      <p data-i18n="pain.p3.body">VS Code・Typora・Obsidian は高機能だが起動が遅くメモリを食う。.md ファイルをさっと確認したいだけなのに、エディタ全体を起動する必要はない。</p>
     </div>
     <div class="pain-card">
       <div class="pain-icon">🔒</div>
-      <span class="tag-bad" data-i18n="pain.p4.tag">Closed Source</span>
-      <h3 data-i18n="pain.p4.title">Closed-source, limited, and expensive</h3>
-      <p data-i18n="pain.p4.body">Many cross-platform Markdown tools are closed-source — limited features, slow updates, subscription fees. When something breaks, you can only wait.</p>
+      <span class="tag-bad" data-i18n="pain.p4.tag">クローズドソース</span>
+      <h3 data-i18n="pain.p4.title">クローズドで機能制限・有料</h3>
+      <p data-i18n="pain.p4.body">多くのクロスプラットフォーム Markdown ツールはクローズドソースで、機能制限・更新が遅い・サブスクが必要。問題が起きても自分で直せない。</p>
     </div>
     <div class="pain-card">
       <div class="pain-icon"><svg width="48" height="48" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" fill="#e53935"/><path d="M14 2l6 6h-6z" fill="#ef9a9a"/><text x="5" y="18" font-size="5.5" font-family="Arial,sans-serif" font-weight="bold" fill="white">PDF</text></svg></div>
-      <span class="tag-bad" data-i18n="pain.p5.tag">UX Gap</span>
-      <h3 data-i18n="pain.p5.title">Opening MD should be as easy as opening PDF</h3>
-      <p data-i18n="pain.p5.body">Double-click a PDF: clean, beautiful, readable. Double-click a .md file: a wall of #, **, and ``` symbols. Same document format, completely different experience.</p>
+      <span class="tag-bad" data-i18n="pain.p5.tag">体験の差</span>
+      <h3 data-i18n="pain.p5.title">MD を開くのは PDF より難しくあるべきでない</h3>
+      <p data-i18n="pain.p5.body">PDF をダブルクリックするときれいな文書が開く。.md をダブルクリックすると # や ** や ``` の記号が羅列される。同じ文書なのに扱いが全然違う。</p>
     </div>
   </div>
   <div class="pain-solution">
-    <h3 data-i18n="pain.sol.title">So I just built one ✦</h3>
-    <p data-i18n="pain.sol.body"><strong>md2u</strong> — a cross-platform Markdown previewer built with Tauri,<br/>using the <strong>same rendering engine as Obsidian</strong> by default. Lightweight, open-source, runs on Windows and Linux.<br/>No more compromises.</p>
+    <h3 data-i18n="pain.sol.title">だから自分で作った ✦</h3>
+    <p data-i18n="pain.sol.body"><strong>md2u</strong> — Tauri で構築したクロスプラットフォーム Markdown プレビューアー。<br/><strong>Obsidian と同じレンダリングエンジン</strong>をデフォルト搭載し、軽量・オープンソース。<br/>Windows / Linux でも同じ体験を。もう妥協しなくていい。</p>
   </div>
 </section>
 
 <section id="features">
   <div class="features">
-    <div class="section-label" data-i18n="feat.label">Features</div>
-    <h2 class="section-title" data-i18n="feat.title">Everything you need</h2>
-    <p class="section-sub" data-i18n="feat.sub">No bloat. Just great Markdown preview.</p>
+    <div class="section-label" data-i18n="feat.label">機能</div>
+    <h2 class="section-title" data-i18n="feat.title">必要なものが揃ってる</h2>
+    <p class="section-sub" data-i18n="feat.sub">無駄なし。Markdown プレビューに特化。</p>
     <div class="features-grid">
-      <div class="feat-card"><div class="feat-icon">⚡</div><h3 data-i18n="feat.f1.title">Instant Preview</h3><p data-i18n="feat.f1.body">Drag a .md file to the window, or run <code>md2u file.md</code>. Renders instantly, auto-updates on save.</p></div>
-      <div class="feat-card"><div class="feat-icon">🎨</div><h3 data-i18n="feat.f2.title">10 CSS Themes</h3><p data-i18n="feat.f2.body">Built-in Obsidian, GitHub, Swiss, Ink, Multi-Column, Grump and more. Custom CSS supported. Switch with ⌘1–⌘9.</p></div>
-      <div class="feat-card"><div class="feat-icon">🔍</div><h3 data-i18n="feat.f3.title">Full-Text Find</h3><p data-i18n="feat.f3.body">Ctrl+F / Cmd+F opens Find Bar with live highlight. Supports Whole words, Case sensitive, Regex.</p></div>
-      <div class="feat-card"><div class="feat-icon">📊</div><h3 data-i18n="feat.f4.title">Mermaid Diagrams</h3><p data-i18n="feat.f4.body">Render flowcharts, sequence diagrams, Gantt charts inline. SVG preserved in exports.</p></div>
-      <div class="feat-card"><div class="feat-icon">📤</div><h3 data-i18n="feat.f5.title">One-Click Export</h3><p data-i18n="feat.f5.body">Export to HTML (with CDN), PDF (A4 paginated), DOCX, MD, OPML with one click.</p></div>
-      <div class="feat-card"><div class="feat-icon">🔓</div><h3 data-i18n="feat.f6.title">Open Source, Free for Everyone</h3><p data-i18n="feat.f6.body">GNU GPL v3 — free for any use including commercial. Source on GitHub, PRs welcome.</p></div>
+      <div class="feat-card"><div class="feat-icon">⚡</div><h3 data-i18n="feat.f1.title">即座にプレビュー</h3><p data-i18n="feat.f1.body">.md ファイルをウィンドウにドラッグ、または <code>md2u file.md</code> で即レンダリング。保存後に自動更新。</p></div>
+      <div class="feat-card"><div class="feat-icon">🎨</div><h3 data-i18n="feat.f2.title">10 種類の CSS テーマ</h3><p data-i18n="feat.f2.body">Obsidian、GitHub、Swiss、Ink、Multi-Column、Grump などを内蔵。Custom CSS 対応。⌘1–⌘9 で切替。</p></div>
+      <div class="feat-card"><div class="feat-icon">🔍</div><h3 data-i18n="feat.f3.title">全文検索</h3><p data-i18n="feat.f3.body">Ctrl+F / Cmd+F で Find Bar を開き、マーカーでリアルタイム強調表示。Whole words・大文字小文字・Regex 対応。</p></div>
+      <div class="feat-card"><div class="feat-icon">📊</div><h3 data-i18n="feat.f4.title">Mermaid 図表</h3><p data-i18n="feat.f4.body">フローチャート・シーケンス図・ガントチャートをインラインレンダリング。エクスポート時も SVG を保持。</p></div>
+      <div class="feat-card"><div class="feat-icon">📤</div><h3 data-i18n="feat.f5.title">ワンクリックエクスポート</h3><p data-i18n="feat.f5.body">HTML（CDN 付き）・PDF（A4 ページ区切り）・DOCX・MD・OPML をアイコンクリックでエクスポート。</p></div>
+      <div class="feat-card"><div class="feat-icon">🔓</div><h3 data-i18n="feat.f6.title">完全オープンソース・永久無料</h3><p data-i18n="feat.f6.body">GNU GPL v3 採用。商用・個人問わず誰でも無料で利用可能。ソースは GitHub 公開、PR 歓迎。</p></div>
     </div>
   </div>
 </section>
 
 <section id="screenshots">
   <div class="gallery">
-    <div class="section-label" style="text-align:center" data-i18n="ss.label">Screenshots</div>
-    <h2 class="section-title" data-i18n="ss.title">Here's what it looks like</h2>
-    <p class="section-sub" style="margin-bottom:48px" data-i18n="ss.sub">Clean, sharp — identical to how Obsidian renders your notes</p>
+    <div class="section-label" style="text-align:center" data-i18n="ss.label">スクリーンショット</div>
+    <h2 class="section-title" data-i18n="ss.title">こんな感じです</h2>
+    <p class="section-sub" style="margin-bottom:48px" data-i18n="ss.sub">Obsidian と全く同じ、クリーンで見やすい表示</p>
     <div class="gallery-grid">
       <div class="gallery-item">
-        <img class="lang-screenshot" data-name="find" src="screenshots/en/find.png" alt="Find Bar" />
-        <div class="gallery-caption" data-i18n="ss.cap1"><strong>Find Bar</strong> — Ctrl+F full-text search with live highlight, Regex support</div>
+        <img class="lang-screenshot" data-name="find" src="../screenshots/en/find.png" alt="Find Bar" />
+        <div class="gallery-caption" data-i18n="ss.cap1"><strong>Find Bar</strong> — Ctrl+F 全文検索、リアルタイムハイライト、Regex 対応</div>
       </div>
       <div class="gallery-item">
-        <img class="lang-screenshot" data-name="themes" src="screenshots/en/themes.png" alt="Themes" />
-        <div class="gallery-caption" data-i18n="ss.cap2"><strong>10 Themes</strong> — From Obsidian to Grump, switch with keyboard shortcuts</div>
+        <img class="lang-screenshot" data-name="themes" src="../screenshots/en/themes.png" alt="Themes" />
+        <div class="gallery-caption" data-i18n="ss.cap2"><strong>10 テーマ</strong> — Obsidian から Grump まで、ショートカットで瞬時に切替</div>
       </div>
       <div class="gallery-item" style="grid-column: 1 / -1">
-        <img class="lang-screenshot" data-name="export" src="screenshots/en/export.png" alt="Export" />
-        <div class="gallery-caption" data-i18n="ss.cap3"><strong>Export Panel</strong> — HTML, PDF, DOCX, MD, OPML — triggered by the share icon</div>
+        <img class="lang-screenshot" data-name="export" src="../screenshots/en/export.png" alt="Export" />
+        <div class="gallery-caption" data-i18n="ss.cap3"><strong>エクスポートパネル</strong> — HTML・PDF・DOCX・MD・OPML、右下の共有アイコンから</div>
       </div>
     </div>
   </div>
 </section>
 
 <section class="download" id="download">
-  <div class="section-label" data-i18n="dl.label">Download</div>
-  <h2 class="section-title" data-i18n="dl.title">Choose your platform</h2>
-  <p class="section-sub" data-i18n="dl.sub">Free download. Open source. No account required.</p>
+  <div class="section-label" data-i18n="dl.label">ダウンロード</div>
+  <h2 class="section-title" data-i18n="dl.title">プラットフォームを選択</h2>
+  <p class="section-sub" data-i18n="dl.sub">無料・オープンソース・アカウント不要</p>
   <div class="download-platforms">
     <div class="platform-card">
       <div class="platform-icon" style="font-size:52px;line-height:1">🐧</div>
       <div class="platform-name">Linux</div>
       <div class="platform-exts">.deb (Debian / Ubuntu)<br>.rpm (Fedora / RHEL)</div>
-      <a class="platform-btn" href="https://github.com/stanwu/md2u/releases/latest" target="_blank" data-i18n="dl.btn">⬇ Download</a>
+      <a class="platform-btn" href="https://github.com/stanwu/md2u/releases/latest" target="_blank" data-i18n="dl.btn">⬇ ダウンロード</a>
     </div>
     <div class="platform-card">
       <div class="platform-icon"><svg width="52" height="52" viewBox="0 0 24 24" fill="#0078d4" xmlns="http://www.w3.org/2000/svg"><path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801"/></svg></div>
       <div class="platform-name">Windows</div>
       <div class="platform-exts">.exe / .msi (x64)<br>.exe / .msi (ARM64)<br><span style="font-size:0.78rem;color:#a78bfa">✦ 支援 NVIDIA RTX Spark</span></div>
-      <a class="platform-btn" href="https://github.com/stanwu/md2u/releases/latest" target="_blank" data-i18n="dl.btn">⬇ Download</a>
+      <a class="platform-btn" href="https://github.com/stanwu/md2u/releases/latest" target="_blank" data-i18n="dl.btn">⬇ ダウンロード</a>
     </div>
     <div class="platform-card" style="position:relative;border-color:rgba(124,108,247,0.25)">
       <div style="position:absolute;top:12px;right:12px;font-size:0.7rem;font-weight:700;background:rgba(248,113,113,0.15);color:#f87171;border:1px solid rgba(248,113,113,0.4);padding:2px 8px;border-radius:999px" data-i18n="dl.mac.soon">Coming Soon</div>
       <div class="platform-icon"><svg width="52" height="52" viewBox="0 0 24 24" fill="#cccccc" xmlns="http://www.w3.org/2000/svg"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.029 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg></div>
       <div class="platform-name">macOS</div>
-      <div class="platform-exts" style="color:var(--text)" data-i18n="dl.mac.note">macOS support planned</div>
+      <div class="platform-exts" style="color:var(--text)" data-i18n="dl.mac.note">macOS サポート予定</div>
       <span class="platform-btn" style="background:rgba(124,108,247,0.25);color:#a78bfa;cursor:not-allowed;border:1px solid rgba(124,108,247,0.3)" data-i18n="dl.mac.btn">Coming Soon</span>
     </div>
   </div>
-  <p class="download-note" data-i18n="dl.note">All releases are built by GitHub Actions and scanned by ClamAV / Windows Defender before publishing.<br/><a href="https://github.com/stanwu/md2u/actions" target="_blank">Build Log</a> · <a href="https://github.com/stanwu/md2u" target="_blank">Source</a> · <a href="https://github.com/stanwu/md2u/blob/master/LICENSE" target="_blank">GNU GPL v3</a><br/><br/>⚠️ <strong>If your antivirus shows a warning</strong>: This app is not yet code-signed. Some heuristic scanners may flag unsigned open-source binaries as suspicious. We are currently applying for code signing through <a href="https://signpath.org/" target="_blank">SignPath Foundation</a> — thank SignPath Foundation for supporting open source projects like ours. Windows Defender and ClamAV both pass. Source code is fully public — verify it yourself or build from source.</p>
+  <p class="download-note" data-i18n="dl.note">全リリースは GitHub Actions で自動ビルドし、ClamAV / Windows Defender でウイルススキャン済み。<br/><a href="https://github.com/stanwu/md2u/actions" target="_blank">Build Log</a> · <a href="https://github.com/stanwu/md2u" target="_blank">ソースコード</a> · <a href="https://github.com/stanwu/md2u/blob/master/LICENSE" target="_blank">GNU GPL v3</a><br/><br/>⚠️ <strong>ウイルス対策ソフトが警告を表示した場合</strong>：本アプリはコード署名未取得のため、一部のヒューリスティックスキャナーが未署名の OSS バイナリを誤検知することがあります。現在 <a href="https://signpath.org/" target="_blank">SignPath Foundation</a> のコード署名を申請中です — オープンソースプロジェクトを支援してくださる SignPath Foundation に感謝します。Windows Defender・ClamAV はいずれも通過済み。ソースコードは完全公開されており、自己検証またはソースからのビルドが可能です。</p>
 </section>
 
 <section id="faq" style="max-width:720px;margin:0 auto;padding:80px 24px">
   <div class="section-label" data-i18n="faq.label">FAQ</div>
-  <h2 class="section-title" data-i18n="faq.title">Frequently Asked Questions</h2>
+  <h2 class="section-title" data-i18n="faq.title">よくある質問</h2>
   <div id="faq-list" style="margin-top:40px;display:flex;flex-direction:column;gap:0">
       <div class="faq-item">
-        <button class="faq-q">What is md2u?<span class="faq-chevron">▼</span></button>
-        <div class="faq-a">md2u is a lightweight, open-source, cross-platform Markdown previewer built with Tauri. It uses the same rendering engine as Obsidian, supports syntax highlighting, Mermaid diagrams, 10 CSS themes, find-in-document, and one-click export to HTML, PDF, DOCX, and more.</div>
+        <button class="faq-q">md2u とは？<span class="faq-chevron">▼</span></button>
+        <div class="faq-a">md2u は Tauri で構築した軽量・オープンソースのクロスプラットフォーム Markdown プレビューアーです。Obsidian と同じレンダリングエンジンを採用し、シンタックスハイライト・Mermaid 図・10 種 CSS テーマ・ドキュメント内検索、および HTML・PDF・DOCX へのワンクリック書き出しをサポートします。</div>
       </div>
       <div class="faq-item">
-        <button class="faq-q">Which platforms are supported?<span class="faq-chevron">▼</span></button>
-        <div class="faq-a">Windows (x64, ARM64) and Linux (.deb, .rpm) are available now. macOS support is planned.</div>
+        <button class="faq-q">対応プラットフォームは？<span class="faq-chevron">▼</span></button>
+        <div class="faq-a">Windows（x64、ARM64）と Linux（.deb、.rpm）が現在利用可能です。macOS は対応予定。</div>
       </div>
       <div class="faq-item">
-        <button class="faq-q">Why no macOS (.dmg) yet?<span class="faq-chevron">▼</span></button>
-        <div class="faq-a">macOS requires all distributed apps to be signed and notarized by an Apple Developer account ($99/year). Unsigned .dmg files are blocked by Gatekeeper on macOS 13+. macOS support is planned once code signing is in place.</div>
+        <button class="faq-q">なぜ macOS 版（.dmg）がないのですか？<span class="faq-chevron">▼</span></button>
+        <div class="faq-a">macOS はすべての配布アプリに Apple Developer アカウント（$99/年）による署名・公証が必要です。未署名の .dmg は macOS 13+ の Gatekeeper でブロックされます。コード署名が整い次第、macOS 版を追加する予定です。</div>
       </div>
       <div class="faq-item">
-        <button class="faq-q">My antivirus flagged the installer — is it safe?<span class="faq-chevron">▼</span></button>
-        <div class="faq-a">This app is not yet code-signed. Some heuristic scanners may flag unsigned open-source binaries as suspicious. We are currently applying for code signing through <a href="https://signpath.org/" target="_blank">SignPath Foundation</a> — thank SignPath Foundation for supporting open source projects like ours. Windows Defender and ClamAV both pass. Source code is fully public — verify it yourself or build from source.</div>
+        <button class="faq-q">ウイルス対策ソフトが警告を出しました — 安全ですか？<span class="faq-chevron">▼</span></button>
+        <div class="faq-a">本アプリはコード署名未取得のため、一部のヒューリスティックスキャナーが未署名の OSS バイナリを誤検知することがあります。現在 <a href="https://signpath.org/" target="_blank">SignPath Foundation</a> のコード署名を申請中です。Windows Defender・ClamAV はいずれも通過済み。ソースコードは完全公開されており、自己検証またはソースからのビルドが可能です。</div>
       </div>
       <div class="faq-item">
-        <button class="faq-q">Is md2u free?<span class="faq-chevron">▼</span></button>
-        <div class="faq-a">Yes. md2u is completely free and open-source under the GNU General Public License v3.0. No account required.</div>
+        <button class="faq-q">md2u は無料ですか？<span class="faq-chevron">▼</span></button>
+        <div class="faq-a">はい。md2u は GNU General Public License v3.0 のもと完全無料・オープンソースです。アカウント不要。</div>
       </div>
       <div class="faq-item">
-        <button class="faq-q">Does md2u collect any data?<span class="faq-chevron">▼</span></button>
-        <div class="faq-a">No. md2u is a local desktop application. It collects no data, makes no network requests, and never sends anything anywhere. See the <a href="privacy-policy.html">Privacy Policy</a>.</div>
+        <button class="faq-q">データは収集されますか？<span class="faq-chevron">▼</span></button>
+        <div class="faq-a">いいえ。md2u はローカルデスクトップアプリです。データ収集・ネットワーク通信は一切行いません。詳細は <a href="../privacy-policy.html">プライバシーポリシー</a> をご覧ください。</div>
       </div>
     </div>
 </section>
 
 <footer>
   <span class="logo">md2u</span>
-  <p data-i18n="footer.credit">Built with <a href="https://claude.ai/code" target="_blank">Claude Code</a> AI assistance · <a href="https://github.com/stanwu/md2u/blob/master/LICENSE" target="_blank">GNU General Public License v3.0</a></p>
+  <p data-i18n="footer.credit"><a href="https://claude.ai/code" target="_blank">Claude Code</a> AI 支援で開発 · <a href="https://github.com/stanwu/md2u/blob/master/LICENSE" target="_blank">GNU General Public License v3.0</a></p>
   <div style="display:flex;gap:16px;flex-wrap:wrap;align-items:center">
     <a href="https://github.com/stanwu/md2u" target="_blank">GitHub →</a>
-    <a href="code-signing-policy.html" style="font-size:0.82rem">Code Signing Policy</a>
-    <a href="privacy-policy.html" style="font-size:0.82rem">Privacy Policy</a>
+    <a href="../code-signing-policy.html" style="font-size:0.82rem">Code Signing Policy</a>
+    <a href="../privacy-policy.html" style="font-size:0.82rem">Privacy Policy</a>
   </div>
 </footer>
 
