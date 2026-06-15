@@ -79,20 +79,22 @@ jobs:
           releaseBody: |
             ## md2u ${{ inputs.version }}
 
-            輕量級桌面 Markdown 預覽器，基於 Tauri 打造。
+            A lightweight, open-source, cross-platform Markdown previewer built with Tauri. Uses the same rendering engine as Obsidian — supports syntax highlighting, Mermaid diagrams, 10 CSS themes, find-in-document, and one-click export to HTML, PDF, DOCX, and more.
 
-            ### 下載
+            **[Landing Page](https://md2u.stanwu.org)** · **[Source Code](https://github.com/stanwu/md2u)**
 
-            | 平台 | 檔案 | 說明 |
-            |------|------|------|
+            ### Downloads
+
+            | Platform | File | Description |
+            |----------|------|-------------|
             | Linux | `.deb` | Debian / Ubuntu |
             | Linux | `.rpm` | Fedora / RHEL / openSUSE |
-            | Windows x64 | `.exe` | NSIS 安裝程式 |
-            | Windows x64 | `.msi` | MSI 安裝程式 |
-            | Windows ARM64 | `.exe` | NSIS 安裝程式（Surface / Snapdragon）|
-            | Windows ARM64 | `.msi` | MSI 安裝程式（Surface / Snapdragon）|
+            | Windows x64 | `.exe` | NSIS installer |
+            | Windows x64 | `.msi` | MSI installer |
+            | Windows ARM64 | `.exe` | NSIS installer (Surface / Snapdragon) |
+            | Windows ARM64 | `.msi` | MSI installer (Surface / Snapdragon) |
 
-            ### 安裝
+            ### Installation
 
             **Linux (Debian/Ubuntu)**
             ```bash
@@ -105,10 +107,18 @@ jobs:
             ```
 
             **Windows**
-            執行 `.exe` 或 `.msi` 安裝程式。
+            Run the `.exe` or `.msi` installer.
+
+            ### FAQ
+
+            **Why no macOS (.dmg) yet?**
+            macOS requires all distributed apps to be signed and notarized by an Apple Developer account ($99/year). Unsigned `.dmg` files are blocked by Gatekeeper on macOS 13+. macOS support is planned once code signing is in place.
+
+            **My antivirus flagged the installer — is it safe?**
+            This app is not yet code-signed. Some heuristic scanners may flag unsigned open-source binaries as suspicious. We are currently applying for code signing through [SignPath Foundation](https://signpath.org/) — thank SignPath Foundation for supporting open source projects like ours. Windows Defender and ClamAV both pass. Source code is fully public — verify it yourself or build from source.
 
             ---
-            > 本專案由 [Claude Code](https://claude.ai/code) AI 輔助開發。
+            > Developed with [Claude Code](https://claude.ai/code) AI assistance · [GNU General Public License v3.0](https://github.com/stanwu/md2u/blob/master/LICENSE)
           releaseDraft: true
           prerelease: ${{ inputs.prerelease }}
           includeUpdaterJson: false
