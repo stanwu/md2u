@@ -121,7 +121,7 @@ All release installers are compiled from source by GitHub Actions and scanned be
 - **Linux** (`.deb`, `.rpm`) — Built on GitHub Ubuntu runner, scanned with [ClamAV](https://www.clamav.net/)
 - **Windows** (`.exe`, `.msi`) — Built on GitHub Windows runner, scanned with Windows Defender
 
-If any scan fails, the release is not published. View the full build log on the [Actions](../../actions) page.
+If any scan fails, the release is not published. View the full build log on the [Actions](https://github.com/stanwu/md2u/actions?query=workflow%3ARelease) page.
 
 ## Tech Stack
 
