@@ -58,10 +58,13 @@
     .btn-secondary { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.06); border: 1px solid var(--border); color: var(--text); text-decoration: none; padding: 14px 28px; border-radius: 10px; font-size: 1rem; font-weight: 600; transition: background 0.2s, transform 0.15s; }
     .btn-secondary:hover { background: rgba(255,255,255,0.1); transform: translateY(-2px); }
     .hero-screenshot { width: 100%; max-width: 900px; border-radius: 16px; border: 1px solid var(--border); box-shadow: 0 32px 80px var(--shadow), 0 0 0 1px rgba(124,108,247,0.2); overflow: hidden; }
-    .screenshot-bar { background: #1e1e2e; padding: 10px 16px; display: flex; align-items: center; gap: 8px; border-bottom: 1px solid var(--border); }
-    .dot { width: 12px; height: 12px; border-radius: 50%; }
-    .dot-r { background: #ff5f57; } .dot-y { background: #febc2e; } .dot-g { background: #28c840; }
-    .screenshot-bar span { color: var(--muted); font-size: 12px; margin-left: 12px; }
+    .screenshot-bar { background: #202020; padding: 0; display: flex; align-items: stretch; border-bottom: 1px solid #333; height: 32px; }
+    .screenshot-bar-title { flex: 1; display: flex; align-items: center; padding: 0 12px; color: #ccc; font-size: 12px; font-family: 'Segoe UI', sans-serif; gap: 8px; }
+    .screenshot-bar-title svg { opacity: 0.7; flex-shrink: 0; }
+    .win-btns { display: flex; align-items: stretch; }
+    .win-btn { width: 46px; display: flex; align-items: center; justify-content: center; cursor: default; color: #ccc; font-size: 10px; transition: background 0.1s; }
+    .win-btn:hover { background: rgba(255,255,255,0.1); }
+    .win-btn.close:hover { background: #c42b1c; color: #fff; }
     .hero-screenshot img { width: 100%; display: block; }
 
     /* Sections */
@@ -160,8 +163,15 @@
   </div>
   <div class="hero-screenshot">
     <div class="screenshot-bar">
-      <span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span>
-      <span>README.md — md2u</span>
+      <div class="screenshot-bar-title">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="#a78bfa"><rect x="1" y="1" width="6" height="6" rx="1"/><rect x="9" y="1" width="6" height="6" rx="1"/><rect x="1" y="9" width="6" height="6" rx="1"/><rect x="9" y="9" width="6" height="6" rx="1"/></svg>
+        README.md — md2u
+      </div>
+      <div class="win-btns">
+        <div class="win-btn">&#8211;</div>
+        <div class="win-btn">&#9633;</div>
+        <div class="win-btn close">&#10005;</div>
+      </div>
     </div>
     <img id="hero-screenshot" src="screenshots/preview.png" alt="md2u preview" />
   </div>
