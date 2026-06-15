@@ -99,6 +99,10 @@ Scanning at the artifact output stage detects known malicious signatures in the 
 
 The free VirusTotal API is limited to 1 request per day — not enough for CI/CD (each release scans 4 files). This project uses platform-native alternatives instead: ClamAV on Linux and Windows Defender on Windows.
 
+**Q: My antivirus flagged the installer — is it safe?**
+
+This app is not yet code-signed. Some heuristic scanners may flag unsigned open-source binaries as suspicious. We are currently applying for code signing through [SignPath Foundation](https://signpath.org/) — thank SignPath Foundation for supporting open source projects like ours. Windows Defender and ClamAV both pass. Source code is fully public — verify it yourself or build from source.
+
 **Q: Why no macOS (.dmg)?**
 
 macOS requires installers to be signed and notarized by an Apple Developer account. Unsigned `.dmg` files are blocked by Gatekeeper on macOS 13+. This project does not yet have an Apple Developer certificate ($99/year). A macOS build will be added once funding is available.
