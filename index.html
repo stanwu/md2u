@@ -126,6 +126,16 @@
     .feat-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
     .feat-card p { color: var(--muted); font-size: 0.88rem; line-height: 1.6; }
 
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid var(--border); }
+    .faq-q { width: 100%; background: none; border: none; color: var(--text); font-size: 1rem; font-weight: 600; text-align: left; padding: 20px 0; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+    .faq-q:hover { color: var(--accent2); }
+    .faq-chevron { font-size: 0.8rem; color: var(--muted); transition: transform 0.2s; flex-shrink: 0; }
+    .faq-item.open .faq-chevron { transform: rotate(180deg); }
+    .faq-a { display: none; color: var(--muted); font-size: 0.92rem; line-height: 1.75; padding-bottom: 20px; }
+    .faq-a a { color: var(--accent2); }
+    .faq-item.open .faq-a { display: block; }
+
     /* Gallery */
     .gallery { padding: 0 24px 100px; max-width: 1100px; margin: 0 auto; }
     .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(460px, 1fr)); gap: 24px; }
@@ -317,6 +327,12 @@
   <p class="download-note" data-i18n="dl.note"></p>
 </section>
 
+<section id="faq" style="max-width:720px;margin:0 auto;padding:80px 24px">
+  <div class="section-label" data-i18n="faq.label"></div>
+  <h2 class="section-title" data-i18n="faq.title"></h2>
+  <div id="faq-list" style="margin-top:40px;display:flex;flex-direction:column;gap:0"></div>
+</section>
+
 <footer>
   <span class="logo">md2u</span>
   <p data-i18n="footer.credit"></p>
@@ -364,6 +380,15 @@ const I18N = {
     'dl.label': '下載', 'dl.title': '選擇你的平台', 'dl.sub': '免費下載，開源，無需帳號', 'dl.btn': '⬇ 下載',
     'dl.mac.soon': 'Coming Soon', 'dl.mac.note': 'macOS 支援規劃中', 'dl.mac.btn': 'Coming Soon',
     'dl.note': '所有 Release 由 GitHub Actions 自動編譯並完成 ClamAV / Windows Defender 掃毒驗證。<br/>查看 <a href="https://github.com/stanwu/md2u/actions" target="_blank">Build Log</a> · <a href="https://github.com/stanwu/md2u" target="_blank">原始碼</a> · <a href="https://github.com/stanwu/md2u/blob/master/LICENSE" target="_blank">GNU GPL v3</a><br/><br/>⚠️ <strong>若防毒軟體出現警告</strong>：本軟體尚未購買程式碼簽署憑證，部分啟發式掃描引擎可能誤判未簽署的開源程式。Windows Defender 與 ClamAV 均已通過。原始碼完全公開，可自行驗證或從原始碼編譯。目前正在申請 <a href="https://signpath.org/" target="_blank">SignPath Foundation</a> 程式碼簽署，感謝 SignPath Foundation 支持開源專案。',
+    'faq.label': 'FAQ', 'faq.title': '常見問題',
+    'faq.items': [
+      ['md2u 是什麼？', 'md2u 是輕量、免費、開源的跨平台 Markdown 預覽器，基於 Tauri 打造，預設採用與 Obsidian 相同的渲染引擎，支援語法高亮、Mermaid 圖表、10 種主題及一鍵匯出。'],
+      ['支援哪些平台？', 'Windows（x64、ARM64）與 Linux（.deb、.rpm）已正式支援。macOS 版本規劃中。'],
+      ['md2u 是免費的嗎？', '完全免費，並以 GNU GPL v3.0 授權開源，無需帳號。'],
+      ['md2u 會收集我的資料嗎？', '不會。md2u 是本地桌面應用程式，不收集任何資料、不發送任何網路請求。詳見 <a href="privacy-policy.html">隱私政策</a>。'],
+      ['防毒軟體出現警告，安全嗎？', '安全。本軟體尚未完成程式碼簽署，目前正在申請 <a href="https://signpath.org/" target="_blank">SignPath Foundation</a> 簽署。Windows Defender 與 ClamAV 均已通過。原始碼完全公開，可自行驗證。'],
+      ['為何沒有 macOS 版？', 'macOS 要求所有應用程式必須由 Apple 開發者帳號簽署及公證，未簽署的 .dmg 在 macOS 13+ 會被 Gatekeeper 封鎖。macOS 版本規劃中。'],
+    ],
     'footer.credit': '本專案由 <a href="https://claude.ai/code" target="_blank">Claude Code</a> AI 輔助開發 · <a href="https://github.com/stanwu/md2u/blob/master/LICENSE" target="_blank">GNU General Public License v3.0</a>',
   },
   'zh-CN': {
@@ -401,6 +426,15 @@ const I18N = {
     'dl.label': '下载', 'dl.title': '选择你的平台', 'dl.sub': '免费下载，开源，无需账号', 'dl.btn': '⬇ 下载',
     'dl.mac.soon': 'Coming Soon', 'dl.mac.note': 'macOS 支持规划中', 'dl.mac.btn': 'Coming Soon',
     'dl.note': '所有 Release 由 GitHub Actions 自动编译并完成 ClamAV / Windows Defender 杀毒验证。<br/>查看 <a href="https://github.com/stanwu/md2u/actions" target="_blank">Build Log</a> · <a href="https://github.com/stanwu/md2u" target="_blank">源码</a> · <a href="https://github.com/stanwu/md2u/blob/master/LICENSE" target="_blank">GNU GPL v3</a><br/><br/>⚠️ <strong>若防病毒软件出现警告</strong>：本软件尚未购买代码签名证书，部分启发式扫描引擎可能误判未签名的开源程序。Windows Defender 与 ClamAV 均已通过。源码完全公开，可自行验证或从源码编译。目前正在申请 <a href="https://signpath.org/" target="_blank">SignPath Foundation</a> 代码签名，感谢 SignPath Foundation 支持开源项目。',
+    'faq.label': 'FAQ', 'faq.title': '常见问题',
+    'faq.items': [
+      ['md2u 是什么？', 'md2u 是轻量、免费、开源的跨平台 Markdown 预览器，基于 Tauri 打造，默认采用与 Obsidian 相同的渲染引擎，支持语法高亮、Mermaid 图表、10 种主题及一键导出。'],
+      ['支持哪些平台？', 'Windows（x64、ARM64）与 Linux（.deb、.rpm）已正式支持。macOS 版本规划中。'],
+      ['md2u 是免费的吗？', '完全免费，并以 GNU GPL v3.0 授权开源，无需账号。'],
+      ['md2u 会收集我的数据吗？', '不会。md2u 是本地桌面应用程序，不收集任何数据、不发送任何网络请求。详见 <a href="privacy-policy.html">隐私政策</a>。'],
+      ['防病毒软件出现警告，安全吗？', '安全。本软件尚未完成代码签名，目前正在申请 <a href="https://signpath.org/" target="_blank">SignPath Foundation</a> 签名。Windows Defender 与 ClamAV 均已通过。源码完全公开，可自行验证。'],
+      ['为何没有 macOS 版？', 'macOS 要求所有应用程序必须由 Apple 开发者账号签署及公证，未签署的 .dmg 在 macOS 13+ 会被 Gatekeeper 阻止。macOS 版本规划中。'],
+    ],
     'footer.credit': '本项目由 <a href="https://claude.ai/code" target="_blank">Claude Code</a> AI 辅助开发 · <a href="https://github.com/stanwu/md2u/blob/master/LICENSE" target="_blank">GNU General Public License v3.0</a>',
   },
   'en': {
@@ -438,6 +472,15 @@ const I18N = {
     'dl.label': 'Download', 'dl.title': 'Choose your platform', 'dl.sub': 'Free download. Open source. No account required.', 'dl.btn': '⬇ Download',
     'dl.mac.soon': 'Coming Soon', 'dl.mac.note': 'macOS support planned', 'dl.mac.btn': 'Coming Soon',
     'dl.note': 'All releases are built by GitHub Actions and scanned by ClamAV / Windows Defender before publishing.<br/><a href="https://github.com/stanwu/md2u/actions" target="_blank">Build Log</a> · <a href="https://github.com/stanwu/md2u" target="_blank">Source</a> · <a href="https://github.com/stanwu/md2u/blob/master/LICENSE" target="_blank">GNU GPL v3</a><br/><br/>⚠️ <strong>If your antivirus shows a warning</strong>: This app is not yet code-signed. Some heuristic scanners may flag unsigned open-source binaries as suspicious. We are currently applying for code signing through <a href="https://signpath.org/" target="_blank">SignPath Foundation</a> — thank SignPath Foundation for supporting open source projects like ours. Windows Defender and ClamAV both pass. Source code is fully public — verify it yourself or build from source.',
+    'faq.label': 'FAQ', 'faq.title': 'Frequently Asked Questions',
+    'faq.items': [
+      ['What is md2u?', 'md2u is a lightweight, free, open-source cross-platform Markdown previewer built with Tauri. It uses the same rendering engine as Obsidian, with syntax highlighting, Mermaid diagrams, 10 themes, and one-click export.'],
+      ['Which platforms are supported?', 'Windows (x64, ARM64) and Linux (.deb, .rpm) are available now. macOS support is planned.'],
+      ['Is md2u free?', 'Yes — completely free and open-source under GNU GPL v3.0. No account required.'],
+      ['Does md2u collect any data?', 'No. md2u is a local desktop app. It collects no data and makes no network requests. See the <a href="privacy-policy.html">Privacy Policy</a>.'],
+      ['My antivirus flagged the installer — is it safe?', 'Yes. This app is not yet code-signed. We are applying for code signing through <a href="https://signpath.org/" target="_blank">SignPath Foundation</a>. Windows Defender and ClamAV both pass. Source code is fully public.'],
+      ['Why no macOS (.dmg) yet?', 'macOS requires all apps to be signed and notarized by an Apple Developer account. Unsigned .dmg files are blocked by Gatekeeper on macOS 13+. macOS support is planned.'],
+    ],
     'footer.credit': 'Built with <a href="https://claude.ai/code" target="_blank">Claude Code</a> AI assistance · <a href="https://github.com/stanwu/md2u/blob/master/LICENSE" target="_blank">GNU General Public License v3.0</a>',
   },
   'ja': {
@@ -475,6 +518,15 @@ const I18N = {
     'dl.label': 'ダウンロード', 'dl.title': 'プラットフォームを選択', 'dl.sub': '無料・オープンソース・アカウント不要', 'dl.btn': '⬇ ダウンロード',
     'dl.mac.soon': 'Coming Soon', 'dl.mac.note': 'macOS サポート予定', 'dl.mac.btn': 'Coming Soon',
     'dl.note': '全リリースは GitHub Actions で自動ビルドし、ClamAV / Windows Defender でウイルススキャン済み。<br/><a href="https://github.com/stanwu/md2u/actions" target="_blank">Build Log</a> · <a href="https://github.com/stanwu/md2u" target="_blank">ソースコード</a> · <a href="https://github.com/stanwu/md2u/blob/master/LICENSE" target="_blank">GNU GPL v3</a><br/><br/>⚠️ <strong>ウイルス対策ソフトが警告を表示した場合</strong>：本アプリはコード署名未取得のため、一部のヒューリスティックスキャナーが未署名の OSS バイナリを誤検知することがあります。現在 <a href="https://signpath.org/" target="_blank">SignPath Foundation</a> のコード署名を申請中です — オープンソースプロジェクトを支援してくださる SignPath Foundation に感謝します。Windows Defender・ClamAV はいずれも通過済み。ソースコードは完全公開されており、自己検証またはソースからのビルドが可能です。',
+    'faq.label': 'FAQ', 'faq.title': 'よくある質問',
+    'faq.items': [
+      ['md2u とは？', 'md2u は Tauri で構築した軽量・無料・オープンソースのクロスプラットフォーム Markdown プレビューアーです。Obsidian と同じレンダリングエンジンを採用し、シンタックスハイライト・Mermaid 図・10 テーマ・ワンクリック書き出しをサポート。'],
+      ['対応プラットフォームは？', 'Windows（x64、ARM64）と Linux（.deb、.rpm）が利用可能です。macOS は対応予定。'],
+      ['md2u は無料ですか？', '完全無料で GNU GPL v3.0 のオープンソースです。アカウント不要。'],
+      ['データは収集されますか？', 'いいえ。md2u はローカルデスクトップアプリです。データ収集・ネットワーク通信は一切行いません。詳細は <a href="privacy-policy.html">プライバシーポリシー</a> をご覧ください。'],
+      ['ウイルス対策ソフトが警告を出しました — 安全ですか？', '安全です。本アプリはコード署名未取得のため、<a href="https://signpath.org/" target="_blank">SignPath Foundation</a> へ申請中です。Windows Defender・ClamAV はいずれも通過済みです。'],
+      ['なぜ macOS 版がないのですか？', 'macOS はすべてのアプリに Apple Developer アカウントによる署名・公証が必要です。未署名の .dmg は macOS 13+ の Gatekeeper でブロックされます。macOS 対応は予定しています。'],
+    ],
     'footer.credit': '<a href="https://claude.ai/code" target="_blank">Claude Code</a> AI 支援で開発 · <a href="https://github.com/stanwu/md2u/blob/master/LICENSE" target="_blank">GNU General Public License v3.0</a>',
   }
 }
@@ -507,6 +559,19 @@ function applyLang(lang) {
   document.querySelectorAll('.lang-screenshot').forEach(img => {
     img.src = ssDir + '/' + img.dataset.name + '.png'
   })
+  // Render FAQ
+  const faqs = t['faq.items']
+  const list = document.getElementById('faq-list')
+  if (faqs && list) {
+    list.innerHTML = faqs.map(([q, a]) => `
+      <div class="faq-item">
+        <button class="faq-q">${q}<span class="faq-chevron">▼</span></button>
+        <div class="faq-a">${a}</div>
+      </div>`).join('')
+    list.querySelectorAll('.faq-q').forEach(btn => {
+      btn.addEventListener('click', () => btn.parentElement.classList.toggle('open'))
+    })
+  }
 }
 
 document.querySelectorAll('.lang-btn').forEach(btn => {
